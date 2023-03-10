@@ -1,0 +1,491 @@
+
+/*  HW2: display inline vs block
+        Regimul display block= ne afiseaza elementele in jos, unul dupa altul. Latimea acestuia = latimea parintelui, iar inaltimea este calculata dupa inaltimea continului acestuia. Poatet fi aplicat margin,padding si influienteaza pozitia celorlate,impingindu-le in jos ori sus. 
+
+        Regimul inline = ne afiseaza elementele de la stinga la dreapta, unul linga altul. Margin si padding poate fi aplicat,influienteaza celelalte elemente doar  axa X, miscindu-le spre stinga sau dreapta. Pe axa Y nu influienteaza continutul, mai degraba se suprapune.
+
+    HW3:vh.vw.vmin vmax = marimi relative fata de marimea ecranului
+    
+        1vh= 1% din inaltimea ecranului. 
+        1vw= 1% din latimea ecranului. 
+
+        Vmin analizeaza care e valoarea minima dintre latime si inaltime si se raporteaza la aceasta valoare. Spre ex.,atunci cind latimea < inaltimea => valoarea Vmin nu mai scade 
+
+        Vmax analizeaza care e valoarea maxima dintre latime si inaltime si se raporteaza la aceasta valoare.  Spre ex.,atunci cind latimea > inaltimea => valoarea Vmax nu mai creste.
+
+
+
+    HW4: read about variables  - done
+
+    HW5: move bottom style in ->after pseudo
+*/
+
+
+
+html{
+    /* height: 100%; */
+}
+
+body{
+    margin: 0;
+    
+    /* height: 100%; */
+}
+
+.l-header{
+    background-color: #222;
+    height: 20vh;
+}
+.l-content{
+    background-color: #333;
+    height: 60vh;
+}
+.l-footer{
+    background-color: #444;
+    height: 20vh;
+}
+
+.sea{
+    /* css variable custom properties */
+    --wave-color: darkblue;
+
+}
+.ship{
+    --primary-color: #777;
+    --secondary-color: #555;
+}
+
+
+
+.sea .wave{
+    height: 100px;
+    /* border: 1px solid red; */
+    background-color: var(--wave-color);
+}
+
+.sea .wave::before{
+    content: "before";
+    display: block;
+    /* border: 1px solid green; */
+    
+    height:100px;
+
+    background-image: radial-gradient(var(--wave-color) 49%,transparent 50%);
+    background-position: 50px 40px;
+    background-size: 100px 300px;
+    background-repeat: repeat-x;
+
+    transform: translateY(-120px);
+}
+
+.sea .wave::after{
+    content: "";
+    display: block;
+    /* border: 1px solid green; */
+
+    height: 100px;
+
+    background-image: 
+        radial-gradient(transparent 50%, var(--wave-color)49%);
+    background-position:
+        0 -55px;
+    background-repeat: repeat-x;
+    background-size: 100px 84px;
+    transform: translateY(-120px);
+
+}
+
+
+/* Torpedo Styles */
+.center{
+     /* absolute center */
+     top: 0;
+     right: 0;
+     bottom: 0;
+     left: 0;
+     margin: auto;
+ 
+}
+
+.sea .torpedo{
+    position: relative;
+
+    width: 200px;
+    height: 200px;
+    border: 1px solid green;
+
+}
+
+.sea .torpedo .head{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+
+    background-color: red;
+    border-radius: 100%;
+}
+
+.sea .torpedo .body{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+
+    background-color: #555;
+    border-radius: 100%;
+}
+
+
+
+.sea .torpedo .tail{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+
+    background-color: #999;
+    border-radius: 100%;
+}
+
+.sea .torpedo .tail-v{
+    position: absolute;
+
+    width: 10px;
+    height: 100px;
+    background-color: #777;
+
+}
+.sea .torpedo .tail-h{
+    position: absolute;
+
+    width: 100px;
+    height: 10px;
+    background-color: #777;
+
+}
+
+.sea .torpedo.reverse .head{
+    z-index: 3;
+    
+    width: 40px;
+    height: 40px;
+}
+.sea .torpedo.reverse .body{
+    z-index: 2;
+    
+    width: 55px;
+    height: 55px;
+}
+
+.sea .torpedo.reverse .tail{
+    z-index: 0;
+
+    width: 60px;
+    height: 60px;
+}
+
+.sea .torpedo.reverse .tail-h{
+   z-index:1 ;
+
+}
+.sea .torpedo.reverse .tail-v{
+   z-index:1 ;
+
+}
+
+
+.ship{
+    width: 500px;
+    height: 250px;
+    border: 1px solid green;
+    position: relative;
+}
+
+.ship .base{
+    width: 500px;
+    height: 50px;
+    /* border: 1px solid red; */
+    background-image: 
+    linear-gradient(#666 50%, brown 50%);
+    border-bottom-right-radius: 80px;
+
+    position: absolute;
+    bottom: 0;
+}
+
+.ship.reverse .base{
+    border-bottom-left-radius: 80px;
+    border-bottom-right-radius:0px
+}
+
+.ship .base .aside{
+    width: 200px;
+    height: 400px;
+    background-image:radial-gradient(#333 20%,transparent 20%);
+ 
+    transform: translateX(-110px) translateY(-150px) ;
+
+   
+}
+.ship.reverse .base .aside{
+    width: 200px;
+    height: 400px;
+    background-image:radial-gradient(#333 20%,transparent 20%);
+ 
+    transform: translateX(410px) translateY(-145px) ;
+
+   
+}
+
+
+.ship .middle .first-level{
+    width: 300px;
+    height: 20px;
+    background-color: var(--primary-color);
+
+    position: absolute;
+    bottom: 50px;
+    right:85px ;
+}
+.ship.reverse .middle .first-level{
+    left:85px ;
+}
+
+.ship .middle .first-level::before{
+    content: "";
+    display: block;
+    width: 5px;
+    height: inherit;
+    background-color: var(--primary-color);
+
+    transform: skew(-10deg);
+    transform-origin:top right ;
+}
+
+.ship .middle .first-level::after{
+    content: "";
+    display: block;
+    width: 5px;
+    height: inherit;
+    background-color: var(--primary-color);
+
+    position: absolute;
+    right: -5px;
+    top: 0;
+
+    transform: skew(10deg);
+    transform-origin:bottom left ;
+}
+
+.ship .middle .gun-1{
+    width: 40px;
+    height: 15px;
+    background-color: var(--primary-color);
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+
+    position: absolute;
+    bottom: 50px;
+    left: 40px;
+
+}
+.ship.reverse .middle .gun-1{
+    left: 30px;
+
+}
+
+.ship .middle .gun-1 .gun-tun{
+    width: 3px;
+    height: 30px;
+    background-color:var(--primary-color);
+    border-radius: 1px;
+    transform: rotateZ(110deg) translateY(15px) translateX(-10px) ;
+}
+
+.ship .middle .gun-2{
+    width: 40px;
+    height: 15px;
+    background-color: var(--primary-color);
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+
+    position: absolute;
+    bottom: 50px;
+    right: 30px;
+
+}
+
+.ship .middle .gun-2 .gun-tun{
+    width: 3px;
+    height: 30px;
+    background-color:var(--primary-color);
+    border-radius: 1px;
+    transform: rotateZ(-110deg) translateY(46px)  translateX(-2px) ;
+}
+
+.ship .middle .second-level{
+    width:150px;
+    height: 20px;
+    background-color: var(--secondary-color);
+
+    position: absolute;
+    bottom: 70px;
+    left: 230px;
+}
+.ship.reverse .middle .second-level{
+    left:120px;
+}
+
+.ship .middle .second-level::before{
+    content: "";
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    background-image: linear-gradient( 90deg, transparent 50%, var(--secondary-color) 50%);
+
+    position: absolute;
+    left: -15px;
+
+    transform: skew(-30deg);
+
+}
+.ship .middle .second-level::after{
+    content: "";
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    background-image: linear-gradient( 90deg, transparent 50%, var(--secondary-color) 50%);
+
+    position: absolute;
+    right: -5px;
+
+    transform: skew(30deg);
+
+}
+
+
+.ship .middle .gun-3{
+    width: 40px;
+    height: 15px;
+    background-color: var(--primary-color);
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+
+    position: absolute;
+    bottom:70px ;
+    left:155px ;
+
+}
+.ship.reverse .middle .gun-3{
+    left:300px ;
+
+}
+
+.ship .middle .gun-3 .gun-tun{
+    width: 3px;
+    height: 30px;
+    background-color:var(--primary-color);
+    border-radius: 1px;
+    transform: rotateZ(110deg) translateY(15px) translateX(-10px) ;
+}
+.ship.reverse .middle .gun-3 .gun-tun{
+    transform: rotateZ(-110deg) translateY(46px)  translateX(-2px) ;
+}
+
+.ship .top{
+    width:100px;
+    height: 15px;
+    background-color: var(--primary-color);
+
+    position: absolute;
+    bottom:90px ;
+    right: 150px;
+}
+.ship.reverse .top{
+    left: 150px;
+}
+
+.ship .top::after{
+    content: "";
+    display: block;
+
+    /* width: 10px;
+    height: 15px; */
+    /* background-color: white; */
+
+    position: absolute;
+    right: -10px;
+
+    border: 20px solid var(--primary-color);
+    border-right: 0;
+    border-bottom: 0;
+    border-top-color: transparent;
+    border-top-width: 15px;
+    border-left-width: 10px;
+}
+.ship.reverse .top::after{
+    right:100px ;
+     /* width: 10px;
+    height: 15px; */
+    border:20px solid var(--primary-color);
+    /* background-color: white; */
+    border-left: 0;
+    border-bottom: 0;
+    border-top-color:transparent ;
+    border-top-width: 15px;
+    border-right-width:10px;
+
+
+}
+
+.ship .top .left-element{
+    width: 10px;
+    height: 35px;
+    background-color: var(--secondary-color);
+
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+}
+.ship.reverse .top .left-element{
+    left: 80px;
+}
+.ship .top .middle-element{
+    width: 8px;
+    height: 70px;
+    background-color: var(--primary-color);
+
+    position: absolute;
+    bottom: 15px;
+    left: 40px;
+}
+.ship.reverse .top .middle-element{
+    left: 50px;
+}
+
+.ship .top .middle-element::after{
+    content: "";
+    display: block;
+
+    width: 35px;
+    height: 8px;
+    background-color: var(--secondary-color);
+
+    position: absolute;
+    bottom: 70px;
+    left: -12px;
+}
+
+.ship .top .right-element{
+    width: 20px;
+    height: 40px;
+    background-color: var(--secondary-color);
+
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+}
+.ship.reverse .top .right-element{
+    left: 10px;
+    
+}
