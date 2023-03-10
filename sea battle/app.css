@@ -20,6 +20,8 @@
     HW5: move bottom style in ->after pseudo
 */
 
+
+
 html{
     /* height: 100%; */
 }
@@ -46,6 +48,11 @@ body{
 .sea{
     /* css variable custom properties */
     --wave-color: darkblue;
+
+}
+.ship{
+    --primary-color: #777;
+    --secondary-color: #555;
 }
 
 
@@ -88,3 +95,599 @@ body{
 
 }
 
+
+/* Torpedo Styles */
+.center{
+     /* absolute center */
+     top: 0;
+     right: 0;
+     bottom: 0;
+     left: 0;
+     margin: auto;
+ 
+}
+
+.sea .torpedo{
+    position: relative;
+
+    width: 200px;
+    height: 200px;
+    border: 1px solid green;
+
+}
+
+.sea .torpedo .head{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+
+    background-color: red;
+    border-radius: 100%;
+}
+
+.sea .torpedo .body{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+
+    background-color: #555;
+    border-radius: 100%;
+}
+
+
+
+.sea .torpedo .tail{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+
+    background-color: #999;
+    border-radius: 100%;
+}
+
+.sea .torpedo .tail-v{
+    position: absolute;
+
+    width: 10px;
+    height: 100px;
+    background-color: #777;
+
+}
+.sea .torpedo .tail-h{
+    position: absolute;
+
+    width: 100px;
+    height: 10px;
+    background-color: #777;
+
+}
+
+.sea .torpedo.reverse .head{
+    z-index: 3;
+    
+    width: 40px;
+    height: 40px;
+}
+.sea .torpedo.reverse .body{
+    z-index: 2;
+    
+    width: 55px;
+    height: 55px;
+}
+
+.sea .torpedo.reverse .tail{
+    z-index: 0;
+
+    width: 60px;
+    height: 60px;
+}
+
+.sea .torpedo.reverse .tail-h{
+   z-index:1 ;
+
+}
+.sea .torpedo.reverse .tail-v{
+   z-index:1 ;
+
+}
+
+
+.ship{
+    width: 500px;
+    height: 250px;
+    border: 1px solid green;
+    position: relative;
+}
+
+.ship .base{
+    width: 500px;
+    height: 50px;
+    /* border: 1px solid red; */
+    background-image: 
+    linear-gradient(#666 50%, brown 50%);
+    border-bottom-right-radius: 80px;
+
+    position: absolute;
+    bottom: 0;
+}
+
+.ship.reverse .base{
+    border-bottom-left-radius: 80px;
+    border-bottom-right-radius:0px
+}
+
+.ship .base .aside{
+    width: 200px;
+    height: 400px;
+    background-image:radial-gradient(#333 20%,transparent 20%);
+ 
+    transform: translateX(-110px) translateY(-150px) ;
+
+   
+}
+.ship.reverse .base .aside{
+    width: 200px;
+    height: 400px;
+    background-image:radial-gradient(#333 20%,transparent 20%);
+ 
+    transform: translateX(410px) translateY(-145px) ;
+
+   
+}
+
+
+.ship .middle .first-level{
+    width: 300px;
+    height: 20px;
+    background-color: var(--primary-color);
+
+    position: absolute;
+    bottom: 50px;
+    right:85px ;
+}
+.ship.reverse .middle .first-level{
+    left:85px ;
+}
+
+.ship .middle .first-level::before{
+    content: "";
+    display: block;
+    width: 5px;
+    height: inherit;
+    background-color: var(--primary-color);
+
+    transform: skew(-10deg);
+    transform-origin:top right ;
+}
+
+.ship .middle .first-level::after{
+    content: "";
+    display: block;
+    width: 5px;
+    height: inherit;
+    background-color: var(--primary-color);
+
+    position: absolute;
+    right: -5px;
+    top: 0;
+
+    transform: skew(10deg);
+    transform-origin:bottom left ;
+}
+
+.ship .middle .gun-1{
+    width: 40px;
+    height: 15px;
+    background-color: var(--primary-color);
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+
+    position: absolute;
+    bottom: 50px;
+    left: 40px;
+
+}
+.ship.reverse .middle .gun-1{
+    left: 30px;
+
+}
+
+.ship .middle .gun-1 .gun-tun{
+    width: 3px;
+    height: 30px;
+    background-color:var(--primary-color);
+    border-radius: 1px;
+    transform: rotateZ(110deg) translateY(15px) translateX(-10px) ;
+}
+
+.ship .middle .gun-2{
+    width: 40px;
+    height: 15px;
+    background-color: var(--primary-color);
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+
+    position: absolute;
+    bottom: 50px;
+    right: 30px;
+
+}
+
+.ship .middle .gun-2 .gun-tun{
+    width: 3px;
+    height: 30px;
+    background-color:var(--primary-color);
+    border-radius: 1px;
+    transform: rotateZ(-110deg) translateY(46px)  translateX(-2px) ;
+}
+
+.ship .middle .second-level{
+    width:150px;
+    height: 20px;
+    background-color: var(--secondary-color);
+
+    position: absolute;
+    bottom: 70px;
+    left: 230px;
+}
+.ship.reverse .middle .second-level{
+    left:120px;
+}
+
+.ship .middle .second-level::before{
+    content: "";
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    background-image: linear-gradient( 90deg, transparent 50%, var(--secondary-color) 50%);
+
+    position: absolute;
+    left: -15px;
+
+    transform: skew(-30deg);
+
+}
+.ship .middle .second-level::after{
+    content: "";
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    background-image: linear-gradient( 90deg, transparent 50%, var(--secondary-color) 50%);
+
+    position: absolute;
+    right: -5px;
+
+    transform: skew(30deg);
+
+}
+
+
+.ship .middle .gun-3{
+    width: 40px;
+    height: 15px;
+    background-color: var(--primary-color);
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+
+    position: absolute;
+    bottom:70px ;
+    left:155px ;
+
+}
+.ship.reverse .middle .gun-3{
+    left:300px ;
+
+}
+
+.ship .middle .gun-3 .gun-tun{
+    width: 3px;
+    height: 30px;
+    background-color:var(--primary-color);
+    border-radius: 1px;
+    transform: rotateZ(110deg) translateY(15px) translateX(-10px) ;
+}
+.ship.reverse .middle .gun-3 .gun-tun{
+    transform: rotateZ(-110deg) translateY(46px)  translateX(-2px) ;
+}
+
+.ship .top{
+    width:100px;
+    height: 15px;
+    background-color: var(--primary-color);
+
+    position: absolute;
+    bottom:90px ;
+    right: 150px;
+}
+.ship.reverse .top{
+    left: 150px;
+}
+
+.ship .top::after{
+    content: "";
+    display: block;
+
+    /* width: 10px;
+    height: 15px; */
+    /* background-color: white; */
+
+    position: absolute;
+    right: -10px;
+
+    border: 20px solid var(--primary-color);
+    border-right: 0;
+    border-bottom: 0;
+    border-top-color: transparent;
+    border-top-width: 15px;
+    border-left-width: 10px;
+}
+.ship.reverse .top::after{
+    right:100px ;
+     /* width: 10px;
+    height: 15px; */
+    border:20px solid var(--primary-color);
+    /* background-color: white; */
+    border-left: 0;
+    border-bottom: 0;
+    border-top-color:transparent ;
+    border-top-width: 15px;
+    border-right-width:10px;
+
+
+}
+
+.ship .top .left-element{
+    width: 10px;
+    height: 35px;
+    background-color: var(--secondary-color);
+
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+}
+.ship.reverse .top .left-element{
+    left: 80px;
+}
+.ship .top .middle-element{
+    width: 8px;
+    height: 70px;
+    background-color: var(--primary-color);
+
+    position: absolute;
+    bottom: 15px;
+    left: 40px;
+}
+.ship.reverse .top .middle-element{
+    left: 50px;
+}
+
+.ship .top .middle-element::after{
+    content: "";
+    display: block;
+
+    width: 35px;
+    height: 8px;
+    background-color: var(--secondary-color);
+
+    position: absolute;
+    bottom: 70px;
+    left: -12px;
+}
+
+.ship .top .right-element{
+    width: 20px;
+    height: 40px;
+    background-color: var(--secondary-color);
+
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+}
+.ship.reverse .top .right-element{
+    left: 10px;
+    
+}
+
+.scope{
+
+    --scope-color:#4f48;
+
+    width: 200px;
+    height: 200px;
+    border: 2px solid var(--scope-color);
+    border-radius: 100%;
+    color: white;
+    font-size: 40px;
+    position: relative;
+}
+
+.scope .mid{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    /* background-color: #2275; */
+
+    text-align: center;
+    line-height: 200px;
+}
+
+.scope .h{
+    width: 400px;
+    height: 200px;
+    position: absolute;
+
+    line-height: 190px;
+    letter-spacing: 174px;
+
+}
+.scope .v{
+    width: 200px;
+    height: 400px;
+    position: absolute;
+   
+
+    line-height: 210px;
+    letter-spacing: 174px;
+    writing-mode: vertical-lr;
+
+}
+
+/* grid container */
+.explosion{
+    width: 300px;
+    height: 300px;
+
+    border: 1px dotted #777;
+
+    display: grid;
+    grid: 1fr 1fr 1fr/ 1fr 1fr 1fr;
+}
+
+/* grid item */
+.fire-bottom-sm{
+    /* border: 1px solid yellow; */
+    grid-column-start: 2;
+    grid-row-start: 3;
+
+    background-image: radial-gradient(rgb(255, 249, 170),transparent 60%);
+    background-size: 100px;
+    background-repeat: no-repeat;
+    z-index: 1;
+
+    animation: fire-sm 0.5s linear;
+    animation-fill-mode: forwards;
+    background-position-x: center ;
+}
+
+.fire-bottom-md{
+    /* border: 1px solid yellow; */
+
+    grid-row-start: 2 ;
+    grid-row-end: 4;
+
+    grid-column-start: 1;
+    grid-column-end: 4;
+
+    background-position: 0 75px ;
+    background-repeat: no-repeat;
+    background-image: radial-gradient(rgb(186, 110, 18),transparent 70%);
+
+    animation: fire-md 2s linear;
+    /* animation-delay: 1s; */
+    animation-fill-mode: forwards;
+    background-position-x: center ;
+}
+
+
+@keyframes fire-sm{
+    0% {
+        background-image: radial-gradient(rgb(255, 249, 170),transparent 60%);
+        background-position-y:100px ;
+       background-size: 0 0 ;
+        opacity: 0; 
+    }
+
+    10%{
+        background-image: radial-gradient(rgb(255, 249, 170), transparent 60%);
+        background-position-y:0 ;
+      background-size: 100% 100%;
+        opacity: 1;
+    }
+    100%{
+        background-image: radial-gradient(rgb(255, 249, 170), transparent 60%);
+        background-position-y:20px;
+        background-size: 0 0 ;
+        opacity: 0;
+    }
+}
+
+@keyframes fire-md{
+    0%{
+        background-position-y:200px ;
+        background-size: 0 0;
+        opacity: 0;
+
+    }
+    15%{
+        background-position-y:0;
+        background-size: 100% 100% ;
+        opacity: 1;
+
+    }
+    100%{
+        background-position-y:250px;
+        background-size: 150% 20%;
+        opacity: 0;
+
+    }
+}
+
+/* 
+time ----------------------
+    0                       100%
+
+ */
+
+/* .radar-box{
+    width: 220px;
+    height: 220px;
+    border: 5px solid white;
+    border-radius: 100%;
+} */
+
+.radar-box{
+    width: 240px;
+    height: 240px;
+
+    border: 2px solid green;
+    border-radius: 100%;
+
+    position: relative; 
+    overflow: hidden;
+    
+}
+
+.radar{
+    width: 240px;
+    height: 240px;
+    /* border: 2px solid green; */
+    border-radius: 100%;
+
+    background-image:
+        radial-gradient(green 0%,transparent 2% 18%, green 2%, transparent 20% 38%, green 2%,transparent 40% 58%, green 2%, transparent 60% 78%, green 2%, transparent 80% 98%, green 2%),
+        linear-gradient(transparent 49%, green 1%, transparent 50%),
+        linear-gradient(45deg,transparent 49%, green 1%, transparent 50%),
+        linear-gradient(90deg, transparent 49%, green 1%, transparent 50%),
+        linear-gradient(135deg, transparent 49%, green 1%, transparent 50%)
+    ;
+    position: absolute;
+    
+}
+
+
+.axxis{
+    width: 200px;
+    height: 200px;
+    /* border: 1px solid white; */
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    background-image: linear-gradient(45deg, green 30%, transparent 60%);
+    transform-origin: top left;
+    animation: rotate 3s linear infinite;
+   
+
+}
+
+@keyframes rotate{
+    from{
+        transform: rotate(0);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
