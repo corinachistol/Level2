@@ -1,0 +1,103 @@
+.sea .layer {
+  /* background-color: #fff5; */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -50%;
+  right: -50%;
+}
+
+.sea .layer:nth-child(1) {
+  z-index: 10;
+  transform: translateZ(0px);
+  filter: brightness(100%) blur(0px);
+  animation: wave 11s infinite;
+  animation-delay: 1.3130435958s;
+}
+
+.sea .layer:nth-child(2) {
+  z-index: 9;
+  transform: translateZ(-50px);
+  filter: brightness(95%) blur(0.5px);
+  animation: wave 12s infinite;
+  animation-delay: 2.0313182786s;
+}
+
+.sea .layer:nth-child(3) {
+  z-index: 8;
+  transform: translateZ(-100px);
+  filter: brightness(90%) blur(1px);
+  animation: wave 13s infinite;
+  animation-delay: 5.9461419717s;
+}
+
+.sea .layer:nth-child(4) {
+  z-index: 7;
+  transform: translateZ(-150px);
+  filter: brightness(85%) blur(1.5px);
+  animation: wave 14s infinite;
+  animation-delay: 1.2515386669s;
+}
+
+.sea .layer:nth-child(5) {
+  z-index: 6;
+  transform: translateZ(-200px);
+  filter: brightness(80%) blur(2px);
+  animation: wave 15s infinite;
+  animation-delay: 6.412222869s;
+}
+
+.sea .layer:nth-child(6) {
+  z-index: 5;
+  transform: translateZ(-250px);
+  filter: brightness(75%) blur(2.5px);
+  animation: wave 16s infinite;
+  animation-delay: 2.0537377577s;
+}
+
+.sea .layer:nth-child(7) {
+  z-index: 4;
+  transform: translateZ(-300px);
+  filter: brightness(70%) blur(3px);
+  animation: wave 17s infinite;
+  animation-delay: 9.1243999564s;
+}
+
+.sea .layer:nth-child(8) {
+  z-index: 3;
+  transform: translateZ(-350px);
+  filter: brightness(65%) blur(3.5px);
+  animation: wave 18s infinite;
+  animation-delay: 0.2195658003s;
+}
+
+.sea .layer:nth-child(9) {
+  z-index: 2;
+  transform: translateZ(-400px);
+  filter: brightness(60%) blur(4px);
+  animation: wave 19s infinite;
+  animation-delay: 6.470346506s;
+}
+
+.sea .layer:nth-child(10) {
+  z-index: 1;
+  transform: translateZ(-450px);
+  filter: brightness(55%) blur(4.5px);
+  animation: wave 20s infinite;
+  animation-delay: 6.5653465276s;
+}
+
+@keyframes wave {
+  0% {
+    left: -50%;
+  }
+  33% {
+    left: -45%;
+  }
+  66% {
+    left: -55%;
+  }
+  100% {
+    left: -50%;
+  }
+}/*# sourceMappingURL=layers.css.map */
