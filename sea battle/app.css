@@ -28,6 +28,7 @@ html{
 
 body{
     margin: 0;
+    overflow: hidden;
     
     /* height: 100%; */
 }
@@ -119,15 +120,20 @@ body{
  
 }
 
+.sea{
+    /* cursor: none; */
+}
+
 .sea .torpedo{
     position: absolute;
 
     width: 200px;
     height: 200px;
     /* border: 1px solid green; */
-    left: 200px;
+    /* left: 200px; */
     transform: scale(.5);
     bottom: 50px;
+    
 
 
 }
@@ -519,7 +525,11 @@ body{
     border-radius: 100%;
     color: white;
     font-size: 40px;
-    position: relative;
+    position: absolute;
+    bottom: 0px;
+    z-index: 1000;
+    transform: scale(.75);
+    /* cursor: none; */
 }
 
 .scope .mid{
@@ -660,9 +670,9 @@ time ----------------------
     border-radius: 100%;
 } */
 
-.radar-box{
-    width: 400px;
-    height: 400px;
+.radar{
+    width: 300px;
+    height:300px;
 
     border: 2px solid green;
     /* border-radius: 100%; */
@@ -672,19 +682,19 @@ time ----------------------
     
 }
 
-.radar{
+.display{
     width: 260px;
     height: 260px;
     border: 2px solid green;
     border-radius: 100%;
 
-    background-image:
+    /* background-image:
         radial-gradient(green 0%,transparent 2% 18%, green 2%, transparent 20% 38%, green 2%,transparent 40% 58%, green 2%, transparent 60% 78%, green 2%, transparent 80% 98%, green 2%),
         linear-gradient(transparent 49%, green 1%, transparent 50%),
         linear-gradient(45deg,transparent 49%, green 1%, transparent 50%),
         linear-gradient(90deg, transparent 49%, green 1%, transparent 50%),
         linear-gradient(135deg, transparent 49%, green 1%, transparent 50%)
-    ;
+    ; */
     position: absolute;
     background-position: center;
     
@@ -692,6 +702,21 @@ time ----------------------
     overflow: hidden;
     
 }
+
+.radar .display .circle-1{
+    width: 26px;
+    height: 26px;
+    border: 1px solid green;
+    border-radius: 100%;
+
+  
+
+    position: absolute;
+    z-index: 1; 
+    background-image: linear-gradient(transparent 49%, green 1%, transparent 50% );
+}
+
+
 
 
 .axxis{

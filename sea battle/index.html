@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="layers.css">
 </head>
-<body>
+<body onkeydown="shoot(event)">
     <!-- 
         Sea Battle
         *Componenets
@@ -66,8 +66,9 @@
     <header class="l-header">HEADER</header>
     <section class="l-content">
 
-        <div class="sea">
-
+        <div class="sea" 
+        onmousemove = "moveScope(event)"
+        >             
             
         </div>
 
