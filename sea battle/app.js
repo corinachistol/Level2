@@ -272,7 +272,7 @@ const shoot = (e)=>{
 
 const renderF = () =>{
     let footer = document.querySelector('.l-footer')
-    footer.innerHTML = `Score:${score}`
+    footer.innerHTML = `Score: ${score}`
 }
 
 renderF();
