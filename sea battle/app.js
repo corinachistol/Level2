@@ -228,6 +228,8 @@ const shoot = (e)=>{
 
                 score -= 20
 
+                renderF()
+
                 //HW4: each time a torpedo misses
                 //decrease the score
             }else {
@@ -244,14 +246,19 @@ const shoot = (e)=>{
                     ){
                         alert("Yeyy")
                         
-                        layers.explosion = true
                         explosion.x =  torpedo.x 
                         explosion.layer = ship.layer
-                       
+
+                        layers[explosion.layer].explosion = true
+                        
+                    
+                        torpedo.shot = false
                         layers[torpedo.layer].torpedo = false
+                       
 
                         
                         score += 10
+                        renderF()
                         resetShip()
                         
 

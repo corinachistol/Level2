@@ -576,7 +576,7 @@ body{
     position: absolute;
     left: 200px;
     bottom: 70px;
-    z-index: 1500;
+    /* z-index: 1500; */
 }
 
 /* grid item */
