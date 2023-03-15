@@ -71,7 +71,7 @@ let explosion = {
     x: 0,
     layer: 0
 }
-let scope ={
+let scope = {
     x:0
 }
 
@@ -84,7 +84,7 @@ let torpedo = {
 let timerShip
 let timerTorpedo
 
-//let objects
+
 
 
 
@@ -99,8 +99,10 @@ const render = () =>{
         let objects 
 
         if(layers[i].ship) {
-            objects += `
-            <div class="ship" style="left: ${ship.x}px">
+
+            if(ship.dir == 1){
+                objects += `
+                <div class="ship" style="left: ${ship.x}px">
                 <div class="base">
                     <div class="aside"></div>
                 </div>
@@ -127,28 +129,63 @@ const render = () =>{
                 </div>
             </div> 
             `
+            } else {
+                objects += `
+                <div class="ship reverse" style="left: ${ship.x}px">
+                <div class="base">
+                    <div class="aside"></div>
+                </div>
+                <div class="middle">
+                    <div class="first-level"></div>
+                    <div class="gun-1">
+                        <div class="gun-tun"></div>
+                    </div>
+                    <div class="gun-2">
+                        <div class="gun-tun"></div>
+                    </div>
+                    
+                    <div class="second-level"></div>
+                    <div class="gun-3">
+                        <div class="gun-tun"></div>
+                    </div>
+                    
+                </div>
+                <div class="top">
+                    <div class="first-level"></div>
+                    <div class="left-element"></div>
+                    <div class="middle-element"></div>
+                    <div class="right-element"></div>
+                </div>
+            </div> 
+            `
+            }
+            
+            
         }
+
+       
+        
 
         if(layers[i].torpedo) {
             objects += `
-        <div class="torpedo" style="left:${torpedo.x}px">
-            <div class="head center"></div>
-            <div class="body center"></div>
-            <div class="tail-h center"></div>
-            <div class="tail-v center"></div>
-            <div class="tail center"></div>
+            <div class="torpedo reverse" style="left: ${torpedo.x}px">
+                <div class="head center"></div>
+                <div class="body center"></div>
+                <div class="tail-h center"></div>
+                <div class="tail-v center"></div>
+                <div class="tail center"></div>
             
-        </div> 
+            </div> 
             `
         }
 
-        if(layers[i].ship == true && layers[i].torpedo == true) {
+        if(layers[i].explosion) {
             objects += `
-        <div class="explosion">
-            <div class="fire-bottom-sm"></div>
-            <div class="fire-bottom-md"></div>
+            <div class="explosion" style="left: ${explosion.x}px">
+                <div class="fire-bottom-sm"></div>
+                <div class="fire-bottom-md"></div>
 
-        </div> 
+            </div> 
             `
         }
 
@@ -179,7 +216,7 @@ const shoot = (e)=>{
         torpedo.shot = true
         torpedo.layer = 0
         layers[torpedo.layer].torpedo = true
-        torpedo.x = scope.x +  445  
+        torpedo.x = scope.x +  345  
         console.log(e)
         console.log(layers)
 
@@ -189,12 +226,14 @@ const shoot = (e)=>{
                 torpedo.shot = false
                 layers[torpedo.layer].torpedo = false
 
+                score -= 20
+
                 //HW4: each time a torpedo misses
                 //decrease the score
             }else {
                 layers[torpedo.layer].torpedo = false
                 torpedo.layer ++
-                layers[torpedo.layer].torpedo = false
+                layers[torpedo.layer].torpedo = true
 
                 if(
                     torpedo.layer == ship.layer 
@@ -203,19 +242,20 @@ const shoot = (e)=>{
                     &&
                     torpedo.x < ship.x +510
                     ){
-
-                        layers.explosion = true
-
-                        let objects
-                        objects += `
-                        <div class="explosion">
-                            <div class="fire-bottom-sm"></div>
-                            <div class="fire-bottom-md"></div>
-                
-                        </div> 
-                            `
-
                         alert("Yeyy")
+                        
+                        layers.explosion = true
+                        explosion.x =  torpedo.x 
+                        explosion.layer = ship.layer
+                       
+                        layers[torpedo.layer].torpedo = false
+
+                        
+                        score += 10
+                        resetShip()
+                        
+
+                
                     //HW2: update the explosion layer
                     //increase score
                     //reset the ship
@@ -224,13 +264,18 @@ const shoot = (e)=>{
                 }
             }
             
-        },500 )
+        }, 500 )
 
     }
     
 }
 
+const renderF = () =>{
+    let footer = document.querySelector('.l-footer')
+    footer.innerHTML = `Score:${score}`
+}
 
+renderF();
 
 
 const resetShip = () =>{
