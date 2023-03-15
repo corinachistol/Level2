@@ -84,6 +84,8 @@ let torpedo = {
 let timerShip
 let timerTorpedo
 
+//let objects
+
 
 
 //HW1: add explosion to the render
@@ -129,7 +131,7 @@ const render = () =>{
 
         if(layers[i].torpedo) {
             objects += `
-        <div class="torpedo style="left:${torpedo.x}px">
+        <div class="torpedo" style="left:${torpedo.x}px">
             <div class="head center"></div>
             <div class="body center"></div>
             <div class="tail-h center"></div>
@@ -140,7 +142,7 @@ const render = () =>{
             `
         }
 
-        if(layers[i].ship == true & layers[i].torpedo == true) {
+        if(layers[i].ship == true && layers[i].torpedo == true) {
             objects += `
         <div class="explosion">
             <div class="fire-bottom-sm"></div>
@@ -202,7 +204,18 @@ const shoot = (e)=>{
                     torpedo.x < ship.x +510
                     ){
 
-                    alert("Yeyy")
+                        layers.explosion = true
+
+                        let objects
+                        objects += `
+                        <div class="explosion">
+                            <div class="fire-bottom-sm"></div>
+                            <div class="fire-bottom-md"></div>
+                
+                        </div> 
+                            `
+
+                        alert("Yeyy")
                     //HW2: update the explosion layer
                     //increase score
                     //reset the ship
