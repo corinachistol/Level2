@@ -179,7 +179,7 @@ const render = () =>{
             `
         }
 
-        if(layers[i].explosion) {
+        if( layers[i].ship && layers[i].explosion) {
             objects += `
             <div class="explosion" style="left: ${explosion.x}px">
                 <div class="fire-bottom-sm"></div>
@@ -248,14 +248,11 @@ const shoot = (e)=>{
                         
                         explosion.x =  torpedo.x 
                         explosion.layer = ship.layer
-
                         layers[explosion.layer].explosion = true
                         
-                    
+                        clearInterval(timerTorpedo)
                         torpedo.shot = false
                         layers[torpedo.layer].torpedo = false
-                       
-
                         
                         score += 10
                         renderF()
