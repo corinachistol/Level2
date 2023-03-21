@@ -1,7 +1,37 @@
 :root{
+    /* scene variables */
     --ambient-color:rgb(46, 11, 11);
     --width: 900px;
     --height: 600px;
+
+    /*  fall animations variables */
+    --fall-start-top:0;
+    --fall-start-left:0%;
+    --fall-start-rx:0;
+    --fall-start-ry:0;
+    --fall-start-rz:0;
+    --fall-start-s:0.3;
+    --fall-end-top:100%;
+    --fall-end-left:100%;
+    --fall-end-rx:1turn;
+    --fall-end-ry:1turn;
+    --fall-end-rz:1turn;
+    --fall-end-s:.7;
+
+    --fall-duration:20s;
+    --fall-delay:0s;
+
+    /* shine animations variables */
+    --shine-start-angle: -.1turn;
+    --shine-end-angle: -.11turn;
+
+    --primary-color: #fdf895;
+    --secondary-color:#d78356;
+    --tertiary-color:#f5e087df;
+
+    --ray2-delay:2.1s;
+  
+    
 
 }
 
@@ -13,163 +43,194 @@ body{
 
 }
 
-#scene{
-    border: 1px solid white;
-    width: var(--width);
-    height: var(--height);
 
-    background-image: url(images/johannes-plenio-RwHv7LgeC7s-unsplash\ \(1\).jpg);
+
+.background{
+    background-image: url(images/backgrounds/background1.jpg);
     background-size: cover;
 
     /* background-repeat: no-repeat; */
 
+}
+
+.container{
+    border: 1px solid white;
+    width: var(--width);
+    height: var(--height);
     position: absolute;
     overflow: hidden;
 
+}
+
+.scene-mask-1{
+   
     perspective: 500px;
+
+    /* Css masking */
+    -webkit-mask-image: url(images/backgrounds/background-1-mask-1.svg);
+    -webkit-mask-size:cover;
 
 
 }
 
-.common{
+.scene-mask-2{
+   
+    perspective: 500px;
+
+    /* Css masking */
+    -webkit-mask-image: url(images/backgrounds/background-1-mask-2.svg);
+    -webkit-mask-size:cover;
+
+
+}
+
+.leaf{
     width: calc(var(--width) / 10 );
     height: calc(var(--height) / 10 ) ;
-     /* border: 1px solid white;
-    background-color: white; */
-
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-
-}
-
-#scene .leaf{
-    background-image: url(images/leaves/maple_leaf_on_a_transparent_background__by_prussiaart_dbkpey8-fullview.png);
-
     position: absolute;
+    top: -20%;
 
-    /* apply the animations */
-    animation: fall 10s ease-in;
-    animation-fill-mode: forwards;
-      animation-iteration-count: 4;
+
+     /* border: 1px solid white;
+    background-color: white; */
 
 }
 
-#scene .leaf1{
+.leaf-1{
     background-image: url(images/leaves/leaf1.png);
-  
-    position: absolute;
-    left: 20%;
 
-    animation: fall1 7s ease-in;
-    animation-delay: 0.5s;
-    animation-iteration-count: 4;
-    animation-fill-mode: forwards;
 }
 
-#scene .leaf2{
-    
+.fall{
+    /* apply the animations */
+    animation: fall var(--fall-duration) ease-in infinite;
+    animation-fill-mode: forwards;
+    animation-delay: var(--fall-delay);
+
+}
+
+
+.leaf-2{
     background-image: url(images/leaves/leaf2.png);
- 
-    position: absolute;
-    left:40%;
-
-    animation: fall2 8s ease-in;
-    animation-fill-mode: forwards;
-    animation-iteration-count: 3;
+  
 }
-#scene .leaf3{
+
+
+.leaf-3{
+    
     background-image: url(images/leaves/leaf3.png);
 
-    position: absolute;
-    left: 60%;
+}
 
-    animation: fall3 7s ease-in;
-    animation-fill-mode: forwards;
-    animation-delay: 1s;
-    animation-iteration-count: 4;
+.leaf-4{
+    background-image: url(images/leaves/leaf4.png);
 
 }
-#scene .leaf4{
-    
-    background-image: url(images/leaves/leaf4.png);
- 
-    position: absolute;
-    left: 80%;
 
-    animation: fall4 5s ease-in;
-    animation-fill-mode: forwards;
-      animation-iteration-count: 5;
+.leaf-5{
+    
+    background-image: url(images/leaves/maple_leaf_on_a_transparent_background__by_prussiaart_dbkpey8-fullview.png);
 
 }
 
 /* css animations */
 @keyframes fall{
     from{
-        top:0%;
-        left: 0%;
-        transform: rotateZ(0) rotateX(0) scale(.2);
+        left:var(--fall-start-left);
+        top:var(--fall-start-top);
+        transform: rotateX(var(--fall-start-rx) ) rotateY(var(--fall-start-ry)) rotateZ(var(--fall-start-rz))  scale(var(--fall-start-s));
     }
     to{
-        top: 100%;
-        left:5%;
-        transform: rotateZ(2turn) rotateX(5turn) scale(1);
+        left: var(--fall-end-left);
+        top: var(--fall-end-top);
+        transform: rotateX(var(--fall-end-rx)) rotateY(var(--fall-end-ry)) rotateZ(var(--fall-end-rz)) scale(var(--fall-end-s));
     }
 
 }
-@keyframes fall1{
+
+/* HW1: 
+    same as leaves-refactor the code using the variables
+
+    HW2: polish the composition
+*/
+
+
+.fog {
+    width: 1600px;
+    height: 800px;
+}
+
+.fog-1{
+    background-image: url(images/fog/fog-1.png); 
+    background-size: contain;
+    background-position:left top ;
+    opacity: .75;
+    filter: sepia(100%) saturate(1000%) hue-rotate(328deg) blur(70px);
+}
+
+.slide{
+    animation: slide 500s linear;
+}
+
+@keyframes slide{
     from{
-        top:10%;
-        left: 20%;
-        transform: rotateZ(0) rotateY(0) scale(.3);
+        background-position-x:0 ;
     }
     to{
-        top: 100%;
-        left:40%;
-        transform: rotateZ(2turn) rotateY(1turn) scale(1);
+        background-position-x: 10000px;
     }
-
 }
-@keyframes fall2{
+
+.ray{
+    width: 1600px;
+    height: 20px;
+    /* border: 3px solid white; */
+    position: absolute;
+    top: 45px;
+    left: -300px;
+
+    background-image: 
+        conic-gradient(
+            transparent .745turn,  /* 0.5+0.1*/
+            var(--primary-color),
+            var(--secondary-color), 
+            var(--primary-color), 
+            var(--tertiary-color), 
+            var(--primary-color) , 
+            transparent .755turn);  /*1.-0.1*/
+    
+}
+
+.ray-1{
+    transform: rotate(-.1turn);
+    mix-blend-mode: overlay;
+    opacity: .5;
+
+    animation: shine 5s infinite alternate;
+}
+.ray-2{
+    --shine-start-angle:-.05turn;
+    --shine-end-angle:-.055turn;
+    transform: rotate(-.09turn);
+    mix-blend-mode: soft-light;
+    opacity: .5;
+
+    animation: shine 5s infinite alternate;
+    animation-delay: var(--ray2-delay);
+}
+
+@keyframes shine{
     from{
-        top:0%;
-        left: 40%;
-        transform: rotateZ(0) rotateY(0) scale(.3);
+        transform: rotate(var(--shine-start-angle));
     }
     to{
-        top: 100%;
-        left:10%;
-        transform: rotateZ(3turn) rotateY(1turn) scale(1);
+        transform: rotate(var(--shine-end-angle));
     }
-
-}
-@keyframes fall3{
-    from{
-        top:40%;
-        left: 60%;
-        transform: rotateY(0) scale(.3);
-    }
-    to{
-        top: 100%;
-        left:70%;
-        transform: rotateY(2turn) scale(1);
-    }
-
 }
 
-@keyframes fall4{
-    from{
-        top:60%;
-        left: 80%;
-        transform:  rotateX(0) scale(.3);
-    }
-    to{
-        top: 100%;
-        left:100%;
-        transform:  rotateX(1turn) scale(1);
-    }
-
-}
 
 
 
