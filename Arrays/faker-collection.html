@@ -1,0 +1,46 @@
+<!-- 
+
+    Arrays(map,forEach,filter,push)
+    external library  CDN = content delivery network
+    callback
+ -->
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js" referrerpolicy="no-referrer"></script>
+
+
+
+<script>
+    let names =[]
+    //1. fill the array with random names
+    //HW1:try to substitute while()-> Array.prototype.fill
+     while(names.length < 10){
+        names.push(faker.name.findName() )
+     }
+    
+        //2. leave only A.. names
+        let filteredNames = names.filter( n => n.startsWith('A'))  // HW2: startwith -> indexOf()
+
+        //3.wrapping with <li>
+            //JS template strings
+        let wrappedNames = filteredNames.map( n => `<li>${n}</li>`)
+
+        //4. printing
+        wrappedNames.forEach (n => document.write(n))
+        
+
+
+        
+    let colors =[]
+    colors.length = 10
+
+    let filledColors = colors.fill(faker.commerce.color(),0 , 10)
+            
+    
+    
+    console.log(colors)
+
+
+</script>
+
+
+
