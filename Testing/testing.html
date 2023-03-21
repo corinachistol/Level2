@@ -1,0 +1,73 @@
+<script>
+
+    //testing in JS
+
+    //COMPONENT
+
+    //1.Author (producer)
+    function sub(a,b) {
+
+        if(typeof a !='number' || typeof b !='number') //principiu pesimistic - error first
+            return null;
+
+        let diff = a-b;
+        return diff;
+    }
+
+    // //2. user(consumer)
+    // //test case1
+    // let res        = sub(20,10);
+    // let assertRes = 10;
+    // if(assertRes == res){
+    //     console.log("Ok")
+    // }else{
+    //     console.log("Failed")
+    // }
+    
+    // //test case2
+    // res       = sub(1,null);
+    // if(isNaN(res)){
+    //     console.log("Ok")
+    // }else{
+    //     console.log("Failed")
+    // }
+
+
+
+    // //test case3
+    // res       = sub(null,1);
+    // if(isNaN(res)){
+    //     console.log("Ok")
+    // }else{
+    //     console.log("Failed")
+    // }
+    
+
+
+    let inputs_1 = [ 20, 0, 1]
+    let inputs_2 = [ 10, 1, null]
+    let asserts  = [10, -1, null]
+
+    //for
+
+    for(let i = 0; i < 4; i++){
+
+        let res      = sub(inputs_1[i], inputs_2[i]);
+        if(asserts[i] == res){
+            console.log("Ok")
+        }else{
+            console.log("Failed")
+        }
+
+    }
+
+
+      //test case1.1
+    
+
+  
+
+
+
+
+</script>
