@@ -31,16 +31,29 @@
 
         
    
-    let colors =[]
-    colors.length = 10
-    let filledColors = colors.fill(faker.commerce.color(),0 , 10)
-            
-    function randomColors () {
-        return parseInt(Math.random()*10)
+
+    // colors.fill(faker.commerce.color(),0 , 10).push()
+    // let colors = new Array(10)
+
+        let colors =[]   
+        colors.length = 10
     
-    }
-    randomColors(filledColors)
-    console.log(colors)
+        for(let i=0; i<colors.length; i++){
+            colors = colors.fill(faker.commerce.color())
+            colors.push()
+            
+        }
+        // let x = 0
+        // while (x < colors.length){
+          
+        //     // colors.fill()
+        //     colors[x]= colors.fill(faker.commerce.color() , 0 )
+        //     colors.push(x)
+          
+        //     x++
+        // }  
+   
+        console.log(colors)
 
 
 </script>
