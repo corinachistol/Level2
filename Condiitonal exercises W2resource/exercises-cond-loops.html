@@ -1,0 +1,49 @@
+<script>
+
+//5. Write a JavaScript for loop that will iterate from 0 to 15. For each iteration, it will check if the current number is odd or even, and display a message to the screen. Go to the editor
+// Sample Output :
+// "0 is even"
+// "1 is odd"
+// "2 is even"
+for(let i = 0; i < 15; i++){
+    if(i % 2 == 0){    //Am vazut o diferenta intre /(cu acest semn nu da rezultatul dorit) si % 
+        console.log(`${i} is even`)
+    }else{
+        console.log(`${i} is odd`)
+    }
+}
+
+//7. Write a JavaScript program which iterates the integers from 1 to 100. But for multiples of three print "Fizz" instead of the number and for the multiples of five print "Buzz". For numbers which are multiples of both three and five print "FizzBuzz"
+
+for (let x =0; x<100;x++){
+    if( x % 3 ===0 && x % 5 === 0){
+        console.log(x + " FizzBuzz")
+    } else if (x % 3 === 0){
+        console.log(x + " Fizz")
+
+    }else if(x % 5 === 0) {
+        console.log(x + " Buzz")
+    }else{
+        console.log(x)
+    }
+
+     
+}
+
+//12. Write a JavaScript program to sum the multiples of 3 and 5 under 1000.
+let sum =0
+for (let z=0; z<1000;z++){
+    if ( z % 3 ===0 || z % 5 === 0){
+        
+         sum +=z
+    }
+
+}
+console.log(sum)
+
+
+
+
+
+
+</script>
