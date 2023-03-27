@@ -1,0 +1,38 @@
+<script>
+
+     // generate a random number
+     // get the initials
+     // wrap in html <h2>
+
+</script>
+
+<script type="module">
+    import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
+  
+    // Caitlyn Kerluke
+
+    const getRandomName = () => "<h2>" + faker.name
+                    .fullName()                  //string
+                    .split(" ")                  //array
+                    .map( n =>`${n[0]}.`)        //array
+                    .join("") +                  //string
+            "</h2>"
+            
+
+
+
+
+        // const name = faker.name.fullName();   //John Doe string
+        // const separated = name.split(" ")       // ["John", "Doe"]
+        // const initials = separated.map( (n)=> { return `${n[0]}.`} ) 
+        // const html = `<h2>${initials.join("")}</h2>`      // ["J". "D".]
+        // return html
+
+
+    
+    for (let i=0; i<5;i++){
+        console.log(getRandomName())
+    }
+  
+  
+  </script>
