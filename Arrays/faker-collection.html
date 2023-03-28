@@ -27,33 +27,53 @@
         //4. printing
         wrappedNames.forEach (n => document.write(n))
         
-
+   // console.log(names)
 
         
    
 
-    // colors.fill(faker.commerce.color(),0 , 10).push()
-    // let colors = new Array(10)
-
-        let colors =[]   
-        colors.length = 10
+      //Varianta1   -- e cea mai simpla. copy paste ca la meet
+   // let colors = []
+      
+    // while(colors.length<10){
+    //     colors.push(faker.commerce.color() )
+    // }
     
-        for(let i=0; i<colors.length; i++){
-            colors = colors.fill(faker.commerce.color())
-            colors.push()
-            
-        }
-        // let x = 0
-        // while (x < colors.length){
-          
-        //     // colors.fill()
-        //     colors[x]= colors.fill(faker.commerce.color() , 0 )
-        //     colors.push(x)
-          
-        //     x++
-        // }  
+   // console.log(colors)
+
+
+
+    //Varianta 2  
+    // let colors = [];
+
+    // for (let i = 0; colors.length<10; i++){
+    //     colors.push(faker.commerce.color())
+    // }
+    
+    // console.log(colors)
+
+
+
+    //Varianta 3 -- aceeasi culoare pe toate 10 pozitii
+
+    let colors = new Array(10).fill(faker.commerce.color())
+
+    
+    console.log(colors)
+
+   //Varianta 4  nu  e reusita  -- pe primele 9 pozitii imi da aceeiasi culoare, pe poz 10 imi da un array
+      // let colors = new Array(10)
+      // for (let i =0; i < colors.length;i++ ){
+      //    colors[i] = colors.fill(faker.commerce.color())
+      // }
+
+      // console.log(colors)
+
+
+
+    
+
    
-        console.log(colors)
 
 
 </script>
