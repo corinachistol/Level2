@@ -54,12 +54,18 @@
 
 
 
-    //Varianta 3 -- aceeasi culoare pe toate 10 pozitii
+    //Varianta 3 -- aceeasi culoare pe toate 10 pozitii.cum sa a
 
-    let colors = new Array(10).fill(faker.commerce.color())
+    //let colors = new Array(10).fill(faker.commerce.color())
+
+    const randomColors = () =>{
+      const color =  new Array(10).fill(faker.commerce.color())
+            return color
+    }
+  
 
     
-    console.log(colors)
+    console.log(randomColors())
 
    //Varianta 4  nu  e reusita  -- pe primele 9 pozitii imi da aceeiasi culoare, pe poz 10 imi da un array
       // let colors = new Array(10)
