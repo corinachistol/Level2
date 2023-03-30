@@ -6,32 +6,136 @@
 // console.log(is_Blank('abc'));
 // true
 // false
-let str = "abc"
-const emptyString = () => {
-    if (str.length != 0){
-        console.log(false)
-    }else{
-        console.log(true)
-    }
-}
+let str = "hello"
+const emptyString = (str) => (str.length != 0) ? console.log(false) : console.log(true);
+    
+    
+    // if (str.length != 0){
+    //     console.log(false)
+    // }else{
+    //     console.log(true)
+    // }
 
-console.log(emptyString(str))
+
+console.log(emptyString(str));
 
 
 // 2. Write a JavaScript function to split a string and convert it into an array of words.
 // Test Data :
 // console.log(string_to_array("Robin Singh"));
 // ["Robin", "Singh"]
-    let name = "Robin Singh";
- const string_to_array =() => {
-    return name.split(" ")
+    let name = "   Robin Singh";
+    const string_to_array = (name) => {
+        //return name.split(" ")
+    return name.trim().split(" ");
  }
- console.log(string_to_array(name))
+    console.log(string_to_array(name))
 
-// Asta e solutia lor. Pentru ce avem nevoie de trim aici?
-//  string_to_array = function (str) {
-//      return str.trim().split(" ");
-// };
-// console.log(string_to_array("Robin Singh"));
+
+//  return name.trim().split(" ");
+
+//console.log(string_to_array("Robin Singh"));
+
+
+// 3. Write a JavaScript function to extract a specified number of characters from a string.
+// Test Data :
+// console.log(truncate_string("Robin Singh",4));
+// "Robi"
+
+const truncate_string = () => {
+    let string = "Robin Singh";
+   
+    return string.substr(0, 4)     //index start,length characters
+    //return string.slice(0,4)     //index start,index end
+    //return string.substring(0,4)   //index start,index end
+    
+}
+console.log(truncate_string())
+
+
+    //REZOLVAREA DE PE SITE. TREBUIE NOI SA ADAUGAM O CONDITIE CARE VERIFICA STRINGUL? EU OARECUM MA REZUM LA REZOLVAREA PROBLEMEI CU  STRINGUL....
+
+// const truncate_string = (string, length) => {
+ 
+//     if ( (string.constructor === String) && (length> 0)){
+//          return string.substr(0, length)     //index start,length characters
+//          //return string.slice(0,4)     //index start,index end
+//          //return string.substring(0,4)   //index start,index end
+
+//     }
+// }
+
+// console.log(truncate_string("Robin Singh", 4))
+
+
+// 4. Write a JavaScript function to parameterize a string.
+// Test Data :
+// console.log(string_parameterize("Robin Singh from USA."));
+// "robin-singh-from-usa"
+    let param = "Robin Singh from USA."
+    const parameterize = () => {
+        return param
+            .toLowerCase()
+            .split(" ")    //array
+            .join ("-")
+            .replace(".", " ")
+
+    }
+
+    console.log(parameterize())
+
+
+//   5. Write a JavaScript function to convert a string in abbreviated form. 
+// Test Data :
+// console.log(abbrev_name("Robin Singh"));
+// "Robin S."
+              //Am copiat solutia dar am practicat in consola si am inteles ideea
+const abbreviated = () =>{
+    let str = "Corina Onila"
+     const splitted = str.trim().split(" ")
+     if (splitted.length > 1){
+        return splitted[0] + " " + splitted[1][0] + "."
+        //return splitted[0] + " " + splitted[1].charAt(0) + "."
+        
+     }
+     return splitted [0]
+    }
+
+console.log(abbreviated())
+
+
+// 8. Write a JavaScript function to capitalize the first letter of a string.
+// Test Data :
+// console.log(capitalize('js string exercises'));
+// "Js string exercises"
+
+//let str2 = "js string exercises"
+
+
+const capitalize = (str) => str[0].toUpperCase() + str.slice(1) 
+
+console.log(capitalize("i need a break"))
+
+
+//  9. Write a JavaScript function to capitalize the first letter of each word in a string.
+
+// Test Data:
+// console.log(capitalize_Words('js string exercises'));
+// "Js String Exercises"
+
+let word = "the quick brown fox"
+const capitalizeWords = () =>{
+    const splitted = word.split(" ")   //splitted = ['the', 'quick', 'brown', 'fox']
+    const upper = splitted.map( (element) => (element[0].charAt(0).toUpperCase() + element[0].slice(1).toLowerCase())   )
+    return upper
+}
+
+console.log(capitalizeWords())
+
+
+
+
+
+
 
 </script>
