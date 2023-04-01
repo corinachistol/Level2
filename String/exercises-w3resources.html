@@ -124,11 +124,16 @@ console.log(capitalize("i need a break"))
 // "Js String Exercises"
 
 let word = "the quick brown fox"
-const capitalizeWords = () =>{
-    const splitted = word.split(" ")   //splitted = ['the', 'quick', 'brown', 'fox']
-    const upper = splitted.map( (element) => (element[0].charAt(0).toUpperCase() + element[0].slice(1).toLowerCase())   )
-    return upper
-}
+const capitalizeWords = () => word.split(" ").map( (element) => (element[0].charAt(0).toUpperCase() + element.slice(1).toLowerCase())).join(" ")
+
+    // const splitted = word.split(" ")   //splitted = ['the', 'quick', 'brown', 'fox']
+    // const upper = splitted.map( (element) => (element[0].charAt(0).toUpperCase() + element.slice(1).toLowerCase())   )
+    // const joined = upper.join(" ")
+    // return joined
+
+
+    
+
 
 console.log(capitalizeWords())
 
