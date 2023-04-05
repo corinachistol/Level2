@@ -2,7 +2,7 @@
 const randomPercent = () => { return parseInt(Math.random() * 100)}
 const randomTurns = () => { return Math.random() * 5}
 const randomTime = () => { return parseInt(Math.random() * 50)}
-const randomDuration = () => { return parseInt(Math.random() * 600)}
+const randomDuration = () => { return parseInt(Math.random() * 100)}
 const randomLeaf = () => { return parseInt(Math.random() * 4 + 1)}
 
 const addLeaf = (number) => {
@@ -51,19 +51,29 @@ addLeaves();
 
 
 //HW2: similar add multiple rays, loops,functions random
-const randomRay = () =>{ return parseInt(Math.random() * 2+1)}
+const randomRay = () => parseInt(Math.random() * 2+1);
+const randomAngle = () => Math.random() * -.65;
 
-const addRay = () =>{
-    let parent = document.querySelector('.layer-1')
+const addRay = (number) =>{
+
+    let startAngle = randomAngle();
+    let endAngle = randomAngle() - .05;
+
+    let parent = document.querySelector(`.layer-1`)
     parent.innerHTML += `
-        <div class="ray ray-${randomRay}"></div>
+        <div class="ray ray-${randomRay()} shine"
+            style="
+                --shine-start-angle:${startAngle}turn;
+                --shine-end-angle:${endAngle}turn;
+            "
+        "></div>
     `
 }
 
 const addRays = () =>{
     for (let i=0; i<3;i++){
-        let number = parseInt(Math.random() * 2+1)
-        addRays(number)
+        let number = parseInt(Math.random() * 3+1)
+        addRay(number)
     }
 }
 

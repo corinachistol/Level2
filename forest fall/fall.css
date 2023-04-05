@@ -25,11 +25,15 @@
     --shine-start-angle: -.1turn;
     --shine-end-angle: -.11turn;
 
-    --primary-color: #fdf895;
-    --secondary-color:#d78356;
-    --tertiary-color:#f5e087df;
+    --ray-primary-color: #fdf895;
+    --ray-secondary-color:#d78356;
+    --ray-tertiary-color:#f5e087df;
 
+    --ray-duration:5s;
     --ray2-delay:2.1s;
+
+
+    --mix-blend-mode:soft-light;
   
     
 
@@ -195,11 +199,11 @@ body{
     background-image: 
         conic-gradient(
             transparent .745turn,  /* 0.5+0.1*/
-            var(--primary-color),
-            var(--secondary-color), 
-            var(--primary-color), 
-            var(--tertiary-color), 
-            var(--primary-color) , 
+            var(--ray-primary-color),
+            var(--ray-secondary-color), 
+            var(--ray-primary-color), 
+            var(--ray-tertiary-color), 
+            var(--ray-primary-color) , 
             transparent .755turn);  /*1.-0.1*/
     
 }
@@ -209,16 +213,34 @@ body{
     mix-blend-mode: overlay;
     opacity: .5;
 
-    animation: shine 5s infinite alternate;
+    animation: shine var(--ray-duration) infinite alternate;
 }
 .ray-2{
+    width: 1600px;
+    height: 80px;
+    position: absolute;
+    top: 15px;
+    left: -300px;
+        border: 3px solid white;
+
+ background-image: 
+    conic-gradient(
+        transparent .735turn,  /* 0.5+0.1*/
+        var(--ray-secondary-color),
+        var(--ray-primary-color), 
+        var(--ray-secondary-color), 
+        var(--ray-primary-color), 
+        var(--ray-tertiary-color) , 
+        transparent .765turn);  /*1.-0.1*/
+
+
     --shine-start-angle:-.05turn;
     --shine-end-angle:-.055turn;
-    transform: rotate(-.09turn);
-    mix-blend-mode: soft-light;
+    /* transform: rotate(-.09turn); */
+    mix-blend-mode: var(--mix-blend-mode);
     opacity: .5;
 
-    animation: shine 5s infinite alternate;
+    animation: shine var(--ray-duration) infinite alternate;
     animation-delay: var(--ray2-delay);
 }
 
