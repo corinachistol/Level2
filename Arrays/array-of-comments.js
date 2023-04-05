@@ -47,3 +47,5 @@ const okGreatThanks = users.find(u => u.id == comments.find(comment => comment.t
 
 
 // 5) Get a list of the users who haven't commented
+const filltered = users.filter(user => !comments.find( comment => comment.userId === user.id ))
+console.log(filltered)
