@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const person ={
+            name: {
+                first:"Bob",
+                last: "Smith"
+            },
+            age:32,
+            bio(){
+                console.log(`${this.name.first} ${this.name.last} is ${this.age} years old`);
+            },
+            indtroduceSelf()  {
+                console.log(`Hi! I'm ${this.name.first}`);
+            },
+        };
+
+        const myDataName = "height";
+        const myDataValue = "1.75m";
+        person[myDataName] = myDataValue;
+
+
+        function logProperty (propertyName) {
+            console.log(person[propertyName])
+        }
+
+        logProperty("name")
+        logProperty("age")
+
+        person.age = 45;
+        person["name"]["last"] = "Cratchit";
+
+
+
+
+        //function
+        function createPerson (name){
+            const obj = {};
+            obj.name = name;
+            obj.introduceSelf = function(){
+                console.log(`Hi! I'm ${this.name}.`)
+            };
+            return obj
+        }
+
+        const salva = createPerson("Salva");
+        const frankie =  createPerson("Frankie")
+
+
+
+        //Constructor
+        function Person(name) {
+            this.name = name;
+            this.indtroduceSelf = function (){
+                console.log(`Hi! I'm ${this.name}.`);
+            } 
+        }        
+
+        const mario = new Person("Mario")
+        const corina = new Person ("Corina")
+
+
+        //Exercise 2
+        const band ={
+            name: "Beyonce",
+            nationality: "American",
+            genre: "Pop",
+            members: 2,
+            formed: 1997,
+            split: false,
+            albums:[
+            {name: "Album1", released:1998},
+            {name: "Album2", released:1999}
+        ]
+        }
+
+        let bandInfo = `My name is ${band.name}. I am an ${band.nationality} ${band.genre} singer, formed in ${band.formed} from ${band.members} members.My first album was named:${band.albums[0]["name"]} released in ${band.albums[0]["released"]}`
+
+        console.log(bandInfo)
+        
+
+        //Exercitiu4
+        function Cat(name,breed,color) {
+            this.name =name;
+            this.breed = breed;
+            this.color = color;
+            this.greeting = function () {
+                console.log(`Hello,said ${this.name} the ${this.breed}.`)
+            }
+        }
+
+        const elfie = new Cat("Elfie", "Cymric", "black")
+        const bertie = new Cat("Bertie","Aphrodite Giant", "red")
+
+
+
+    </script>
+</body>
+</html>
