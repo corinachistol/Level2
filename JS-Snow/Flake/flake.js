@@ -1,5 +1,5 @@
 
-// OOP:Classes -->Object / constructor = o metoda speciala ce ajuta la initierea obiectelor
+// OOP:Classes -->Object / constructor = o metoda speciala ce ajuta la initierea obiectelor  --part1
 
 // class Person{
 //     ...
@@ -28,30 +28,56 @@
 
 //const randomScale = () => { return Math.random() * 1};
 
+//FLAKE COMPONENT
+class Flake{ //PascalCase, camelCase
 
-class Flake { //PascalCase, camelCase
-    
-    constructor( n, top, left, bgcolor, scale ) {
-        this.n = n
-        this.top = top
+    //APPEAR
+    constructor( n, left, top ) {
+        this.n    = n
         this.left = left
-        this.bgcolor = bgcolor
-        this.scale = scale
-        //HW1: make it work:
-         //             left, size(transform:scale() ), color (bg-color )
+        this.top  = top
+        //this.bgcolor = bgcolor
+        //this.scale   = scale
     }
-    //properties:( show us the structure) top, left, size, speed (x,y,), color....
-     
-    // methods: (show us the behavior), fall(), move(), fade()
 
-    render(root) {
-        root.innerHTML = `<div class="flake" 
-                            style="
-                                top:${this.top}px;
-                                left:${this.left}px;
-                                background-color:${this.bgcolor};
-                                transform:${this.scale};
-                            "
-                        >${this.n}</div>`
-    }
- }
+       //HW1: make it work:
+         //             left, size(transform:scale() ), color (bg-color )
+
+        //properties:( show us the structure) top, left, size, speed (x,y,), color....
+            
+        // methods: (show us the behavior), fall(), move(), fade()
+   
+
+
+
+
+    // render(root) {
+    //     root.innerHTML = `<div class="flake" 
+    //                         style="
+    //                             top:${this.top}px;
+    //                             left:${this.left}px;
+    //                             background-color:${this.bgcolor};
+    //                             transform:${this.scale};
+    //                         "
+    //                     >${this.n}</div>`
+    // }
+}
+
+
+ /*
+    ! COMPONENT LIFECYCLE
+    ! PROTOTYPING
+    ! DETACHED (headless) APPROACH
+ */
+
+ /*
+    LIFECYCLE
+        *APPEAR
+        |
+        |
+        falling phase
+        |
+        |
+        * DISAPPEAR
+ 
+ */
