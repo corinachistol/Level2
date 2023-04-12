@@ -1,4 +1,4 @@
-
+//Meet 4-5
 
 /*
 .*  cauta orice numar (.)in orice cantitate(*)
@@ -18,26 +18,25 @@
 
 //write a function that gets this text and returns the sums
 
-let text = `I have 1000.00 USD. 
-I have 1000 00 USD.
-I have 1000 USD.
+let text = `I have 1000.00USD. 
+I have 1000USD.
 I have 100.00EURO.
-I have 100.00 EUR. 
-I have 50,50 MDL.
+I have 100.00EUR. 
+I have 50,50MDL.
 I have 50$.
 I have 100€`
 
 const extractCurreny = (text) => {
-    let r = /([0-9]+[.,\s]?[0-9]+[\s]?)(USD|EUR|EURO|MDL|\$|\€)/g
+    let r = /([0-9]+([\.,][0-9]+)?)(USD|EUR|EURO|MDL|\$|\€)/g
     const result = text.match(r)                   // ['1000.00 USD', '1000 00 USD', '1000 USD', '100.00EUR', '100.00 EUR', '50,50 MDL', '50$', '100€']
     const filtered = result.filter( v => (v.includes("USD") || v.includes("$") ))
     //const filtered1 = result.filter(v => ( v.endsWith("USD") || v.endsWith("$"))  )
     const splitted = filtered.toString()
-    const converted = splitted.replace( /([0-9]+[.,\s]?[0-9]+[\s]?)(USD|\$)/g, (m,g1,g2) => { 
+    const converted = splitted.replace( /([0-9]+([\.,][0-9]+)?)(USD|\$)/g, (m,g1,g2) => { 
         let amount = g1*0.92 
         return `${amount}EUR`
      } ).split(",")
-    //const sorted = result.sort( (a,b)=> a.localeCompare(b))
+  
 
     for( let i of result){   
         console.log(i)
@@ -52,12 +51,22 @@ console.log(extractCurreny(text));
 
 
 
-
+let res = []
 const extractCurrency2 = (text) => {
-    let r = /([0-9]+[.,\s]?[0-9]+[\s]?)(USD|EUR|EURO|MDL|\$|\€)/g
-    let r_dollar = /([0-9]+[.,\s]?[0-9]+[\s]?)(USD|\$)/g
+    let r = /([0-9]+([\.,][0-9]+)?)(USD|EUR|EURO|MDL|\$|\€)/g
+    let r_dollar = /([0-9]+([\.,][0-9]+)?)(USD|\$)/g
     let matches = text.matchAll(r)
-    return [...matches].filter( v=> (v.includes("USD") || v.includes("$")))
+    const filtered = [...matches]
+                        .filter( v=> (v.includes("USD") || v.includes("$")))
+    return filtered
+                .map( match => `${match[1]}${match[3]}` )
+                .toString()
+                .replace( r_dollar,(m,g1,g2)=> {
+        let amount = g1 * 0.92
+        return `${amount}EUR`
+    }).split(".")
+      //  [match[1], match[3]] )
+
 
 }
 
