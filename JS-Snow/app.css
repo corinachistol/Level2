@@ -1,0 +1,15 @@
+body{
+    background-color: #112;
+    background-image: url(media/bg2.jpg);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+
+    
+}
+
+#scene{
+    /* border: 1px solid red; */
+    width: 800px;
+    height: 580px;
+    position: relative;  /*fix the absolute coors of its children*/
+}
