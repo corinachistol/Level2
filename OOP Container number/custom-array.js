@@ -43,23 +43,26 @@ class NumberContainer{
         
     }
 
-    forEach ( cb ) {
-            // this works like a loop
-        if ( this.length > 0) {
-            cb(this.val_0)
-        }
-        if ( this.length > 1 ) {
-            cb(this.val_1)
-        }
-        if ( this.length > 2 ) {
+    // forEach ( cb ) {
+    //         // this works like a loop
+    //     if ( this.length > 0) {
+    //         cb(this.val_0)
+    //     }
+    //     if ( this.length > 1 ) {
+    //         cb(this.val_1)
+    //     }
+    //     if ( this.length > 2 ) {
+    //         cb(this.val_2)
+    //     }
+        
+    // }
+
+    forEachReverse ( cb ) {
+        if(this.length-1 == undefined){
             cb(this.val_2)
         }
-        
     }
 
-    // forEach ( cb ) {
-
-    // }
 
 
     //HW3: try to do a forEachREverse (cb(val))
