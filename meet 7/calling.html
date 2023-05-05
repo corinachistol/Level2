@@ -1,0 +1,17 @@
+<button id="btn">
+    click me
+
+</button>
+
+<script>
+    let data ={
+        info: "This is some text...",
+        print: function() {
+            console.log(this)
+            console.log(this.info)
+        }
+    }
+
+    btn.addEventListener("click", data.print)
+</script>
+
