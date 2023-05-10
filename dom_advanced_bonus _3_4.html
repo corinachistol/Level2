@@ -1,0 +1,147 @@
+<!--
+
+DOM Advanced
+
+1. window
+    |
+    v
+  document:
+        element
+        styles
+        images
+        events
+        ...
+
+               USER
+                 ^
+                 |
+                 v
+               window
+                 ^
+                 |
+                 v
+2. JS < ------ > DOM <------ HTML
+                 ^
+                 |
+                 v
+                CSS
+
+    
+3. Everything in an OBJECT  (from a certain Class)
+
+
+
+
+
+
+        window <Window>
+         |
+         v
+        document <HTMLDocument>      .body--------------------
+            |
+            v  .firstElementChild------------------
+            .children <HTMLCollection>   --Array   |
+                |                                  |
+                |                                  |
+                |                                 /
+                |                                v
+                \ - [0] - html <HTMLHtmlElement> <-----
+                    |                                  \
+                    |                                   |
+                    \--children  <HTMLHtmlElement>      |
+                        |                               |
+                        |                               |
+    .firstElementChild  \ - [0] - head   .parentElement
+                        |           <HTMLHeadElement >
+                        |
+    .lastElementChild   \ - [1] - body
+
+Prin JS poti parcurge structura HTML in orice directie, comparativ cu selectorii CSS care pot parcurge structura doar de sus in jos.
+
+
+
+
+
+
+
+                            .parentElement
+                                ^
+                                |
+ .previouElementSibling <---- element  --- > .nextElementSibling
+                                |
+                                |
+                                v
+                                .children
+                                [
+                                    0 - .firstElementChild
+                                 1 ...
+                                    2 ...
+
+                                    n -> .lastElementChild
+                                ]
+
+    .getElementById()          -> HTMLXXXElement
+    .getElement HTMLXXXElement ]
+    .getElementByTagName()     -> HTMLCollection[ HTMLXXXElement ]
+
+    .querySelector()           -> HTMLXXXElement
+    .querySelectorAll()        -> HTMLCollection[ HTMLXXXElement ]
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    element.id
+
+    element.className  - string
+    element.classList  - something between array and object
+
+    element.style
+    element.src
+    element.href
+    ...
+    element.value
+
+    element.innerHTML
+    element.innerText
+
+
+
+
+
+    .getAttribute()
+    .setAttribute()
+
+
+    .createElement()
+    .appendElement()
+    .removeElement()
+
+
+
+    element.onclick = fucntion () {}
+           .onscroll =  fucntion () {}
+
+        
+    .addEventListener()
+    .removeEventListener()
+
+
+
+
+
+
+
+
+
+
+
+-->
