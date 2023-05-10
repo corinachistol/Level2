@@ -1,0 +1,100 @@
+
+
+<html>
+<body>
+  <div>Users:</div>
+  <ul>
+    <li>John</li>
+    <li>Pete</li>
+  </ul>
+
+
+<!-- 
+
+For each of the following, give at least one way of how to access them:
+
+The <div> DOM node?
+    document.body.firstElementChild
+    document.body.children[0]
+    document.body.childNodes[1] - asta nu am dedus-o
+
+The <ul> DOM node?
+    document.body.children[1]
+    document.body.firstElementChild.nextElementSibling
+
+    document.body.lastElementChild -> rezulta script tag care il adauga browserul automat
+
+The second <li> (with Pete)?
+    document.body.children[1].children[1]
+    document.body.firstElementChild.nextElementSibling.lastElementChild
+
+ -->
+
+
+ <table border="1">
+    <tr>
+        <td>1:1</td>
+        <td>2:1</td>
+        <td>3:1</td>
+        <td>4:1</td>
+        <td>5:1</td>
+    </tr>
+    <tr>
+        <td>1:2</td>
+        <td>2:2</td>
+        <td>3:2</td>
+        <td>4:2</td>
+        <td>5:2</td>
+    </tr>
+    <tr>
+        <td>1:3</td>
+        <td>2:3</td>
+        <td>3:3</td>
+        <td>4:3</td>
+        <td>5:3</td>
+    </tr>
+    <tr>
+        <td>1:4</td>
+        <td>2:4</td>
+        <td>3:4</td>
+        <td>4:4</td>
+        <td>5:4</td>
+    </tr>
+    <tr>
+        <td>1:5</td>
+        <td>2:5</td>
+        <td>3:5</td>
+        <td>4:5</td>
+        <td>5:5</td>
+    </tr>
+ </table>
+
+</body>
+</html>
+
+ <script>
+    //   Ca din topor varianta mea ((((
+    // let td1 = table.rows[0].cells[0];
+    // let td2 = table.rows[1].cells[1];
+    // let td3 = table.rows[2].cells[2];
+    // let td4 = table.rows[3].cells[3];
+    // let td5 = table.rows[4].cells[4];
+
+    // td1.style.background = "red";
+    // td2.style.background = "red";
+    // td3.style.background = "red";
+    // td4.style.background = "red";
+    // td5.style.background = "red";
+
+
+    let table = document.body.children[2];
+
+    for (let i = 0; i< table.rows.length; i++){
+        let row = table.rows[i]
+        row.cells[i].style.background = "red"
+    }
+
+
+ </script>
+
+
