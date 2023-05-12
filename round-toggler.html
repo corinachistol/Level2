@@ -54,14 +54,10 @@
         btn.addEventListener('click', () => {
             
             //3.read the button width and height
-            let cStyles = getComputedStyle(btn)
-            let height = parseInt(cStyles.height)  //160px
-            height *= 1.5
-            let border = parseInt(cStyles.borderRadius)
-            border +=50
-            btn.style.height = `${height}px`
-            btn.style.width = `${height}px`
-            btn.style.borderRadius = `${border}%`
+           
+            checkClick(clicks)
+          
+            
             //console.log(cStyles.borderRadius)
 
             // if('click' === 1) {
@@ -77,6 +73,39 @@
             //HW2: adjust the border radius
             //HW3: first click + 50% , second click - 50%, third click - reset
         })
+
+        let clicks = 0
+
+        function checkClick(click) {
+
+            let cStyles = getComputedStyle(btn)
+            let height = parseInt(cStyles.height)  //160px
+            let height1 = height * 1.5
+            let height2 = height * 2
+
+            let border = parseInt(cStyles.borderRadius)
+            border +=50
+            btn.style.borderRadius = `${border}%`
+
+            if ( click === 1 ) {
+                clicks++
+
+                btn.style.height = `${height1}`
+                btn.style.width =  `${height1}`
+               
+
+            } else if ( click === 2 ){
+                clicks++
+
+                btn.style.height = `${height2}px`
+                btn.style.width = `${height2}px`
+
+            } else {
+                btn.style.height = "160px"
+                btn.style.width = "160px"
+                
+            }
+        }
 
     </script>
     
