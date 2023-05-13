@@ -77,8 +77,8 @@
             if ( click === 1 ) {
                 clicks++
 
-                btn.style.height = `${height1}`
-                btn.style.width =  `${height1}`
+                btn.style.height = `${height1}px`
+                btn.style.width =  `${height1}px`
                
 
             } else if ( click === 2 ){
@@ -88,6 +88,7 @@
                 btn.style.width = `${height2}px`
 
             } else {
+                clicks = 0
                 btn.style.height = "160px"
                 btn.style.width = "160px"
                 
