@@ -5,15 +5,15 @@ Here’s the document with the table and form.
 How to find?…
 
 1.The table with id="age-table".    
-     let table =  document.getElementById("age-table")
+EU: let table =  document.getElementById("age-table")
 
 2.All label elements inside that table (there should be 3 of them). 
-      table.getElementsByTagName("label") / 
+EU: table.getElementsByTagName("label") / 
       document.querySelectorAll(" #age-table label") --- >HTMLCollection(4) [label, label, label, label]
 
 3.The first td in that table (with the word “Age”).  
     table.rows[0].cell[0] / 
-    table.getElementsByTagName("td")[0]  /
+EU: table.getElementsByTagName("td")[0]  /
     table.querySelector("td")
 
 4.The form with name="search".     
