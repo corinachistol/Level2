@@ -47,7 +47,7 @@
          let button2 = document.getElementsByTagName("button")[0]
          console.log(button2)
 
-         let button3 = document.querySelector("#button")
+         let button3 = document.querySelector("button")
          console.log(button3)
         
         //2. add an event listener
@@ -55,7 +55,7 @@
             
             //3.read the button width and height
            
-            checkClick(clicks)
+            checkClick()
           
             //HW2: adjust the border radius
             //HW3: first click + 50% , second click - 50%, third click - reset
@@ -63,36 +63,40 @@
 
         let clicks = 0
 
-        function checkClick(click) {
-
+        function checkClick() {
+            console.log("!!!")
             let cStyles = getComputedStyle(btn)
             let height = parseInt(cStyles.height)  //160px
-            let height1 = height * 1.5
-            let height2 = height * 2
-
+            
+            
             let border = parseInt(cStyles.borderRadius)
             border +=50
             btn.style.borderRadius = `${border}%`
+            btn.style.height = `${height}px` 
+            btn.style.width =  `${height}px`
+            clicks++
 
-            if ( click === 1 ) {
-                clicks++
-
-                btn.style.height = `${height1}px`
-                btn.style.width =  `${height1}px`
+            if ( clicks === 1 ) {
+                height *= 1.5
+                btn.style.height = `${height}px` 
+                btn.style.width =  `${height}px`
+                debugger
                
 
-            } else if ( click === 2 ){
-                clicks++
-
-                btn.style.height = `${height2}px`
-                btn.style.width = `${height2}px`
+            } else if ( clicks === 2 ){
+                height *=2
+                btn.style.height = `${height}px`
+                btn.style.width = `${height}px` 
+                debugger
 
             } else {
                 clicks = 0
                 btn.style.height = "160px"
                 btn.style.width = "160px"
+                debugger
                 
             }
+           
         }
 
     </script>
