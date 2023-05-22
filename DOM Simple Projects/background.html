@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Background Color</title>
+    <style>
+      
+        button{
+            position: absolute;
+            top: 50%;
+            left: 50%; 
+            font-size: 24px; 
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="btn">Click me to change the BgColor</button>
+    </div>
+    
+
+    <script>
+
+        let btn = document.getElementById("btn")
+        
+        const colors = ['yellow', "red", "green", "blue","black", "orange", "pink"]
+
+
+        const changeBgColor = (colors) => {
+            let randomIndex = Math.floor( Math.random() * colors.length )
+            let randomColor = colors[randomIndex]
+            document.body.style.backgroundColor = randomColor
+            console.log( randomColor )
+            //console.log(randomIndex)
+            //return colors[randomIndex]
+            //console.log( randomIndex )
+        }
+
+        btn.addEventListener("click", changeBgColor)
+    </script>
+</body>
+</html>
