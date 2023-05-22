@@ -25,6 +25,7 @@ const newTextNode = (text) => {
     return document.createTextNode(text)
 }
 
+//let newUser = {};
 
 
 //CRUD functions
@@ -37,34 +38,45 @@ const addUser = (data, selector) => {
                 ( key, index ) => {
                     let input  = newElement('input')
                     let button = newElement('button')
-                        input.setAttribute('placeholder', key)
-
-                        button.innerHTML  = "✔"
-                        button.classList.add('checked')
-                        //varianta  1 callback
-                        button.addEventListener('click', () => {
-                            alert("User Added!")
-                        })
+                    input.setAttribute('placeholder', key)
+                    input.setAttribute('value', key)
+                    document.body.appendChild(input) // ori aici trebuie append child (td), td-> tr, tr->table?
+                    
+                    
+                    button.innerHTML  = "✔"
+                    button.classList.add('checked')
+                    //varianta  1 callback
+                    button.addEventListener('click', function getAlert (e){
+                        Array.from(children).forEach( c => {
+                              //console.log(c.target.value) // asa nu e corect
+                                console.log(c.value)
+                            })
+                      
+                          alert("User Added!")
+                    } )
 
                         //varianta2 prin mentionarea unei functii ajutatoare
                        // button.addEventListener('click', getAlert)
-                    
+                      
                     let children = [
                         input
                     ]
+                  
                     if(index == 2) {
                         children.push(button)
                     }
 
+                    //let inputs = Array.from(input).forEach( (elem, idx) => newUser[`val${idx}`] = elem )
 
-                    //Array.from(input).forEach( i => console.log(i.value)) //-> nu apare nimic in consola
+        
+
+                    //Array.from(children).forEach( i => console.log(i.value)) //-> nu apare nimic in consola
                     //Object.values(Array.from(input)) //-> nu apare nimic in consola
                     
                    // console.log(input.value)  // -> 3
-                    //children.forEach( input => console.log(input.value)) // ->4
-                    children.forEach( input => console.log(input)) // -> ne arata input tag cu placeholder attribute
+                    //children.forEach( input => console.log(input.value) ) // ->4
+                    //children.forEach( input => console.log(input)) // -> ne arata input tag cu placeholder attribute
                     //children.map( (child, value) => console.log(child))
-                    
                     
                     return newElement('td', [], children)
 
@@ -81,9 +93,14 @@ const addUser = (data, selector) => {
     )
 }
 
-// function getAlert()  {
-//     alert("User added!!!")
-// }
+function getAlert()  {
+
+     Array.from(children).forEach( c => {
+      //  e.target.value = c.value
+        console.log(c.value)})
+
+    alert("User Added!")
+}
 
 
 const showAsTable = ( data, selector ) => {
