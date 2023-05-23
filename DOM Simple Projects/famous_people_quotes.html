@@ -18,28 +18,24 @@
         btn.addEventListener("click", updateQuote)
 
         const quotes = [
-            {quote: "Eighty percent of success is showing up.", author: "Woody Allen"},
+            {quote:"Eighty percent of success is showing up.", author: "Woody Allen"},
             {quote:"Ask not what your country can do for you; ask what you can do for your country." , author: "John Kennedy" },
-            {quote: "If at first you don’t succeed, try, try again.", author: "W. E. Hickson" },
-            {auote: "If you want something said, ask a man; if you want something done, ask a woman.", author: "Margaret Thatcher"}
+            {quote:"If at first you don’t succeed, try, try again.", author: "W. E. Hickson" },
+            {quote:"If you want something said, ask a man; if you want something done, ask a woman.", author: "Margaret Thatcher"}
         ]
 
         function updateQuote() {
             let randomIndex = Math.floor( Math.random() * quotes.length )
+          
             let randomQuote = quotes[randomIndex]
 
             let p = document.getElementById("text")
 
-            p.innerHTML = randomQuote
-            
-            console.log(randomQuote)
-            
-            // randomQuote.forEach( q => { 
-            //     console.log( `Quote1:${q.quote}Author:${q.author}` )
-            // })                                        ---> forEach is not a function
-            
+            p.innerHTML = `<q><i>${randomQuote.quote}</i></q> ${randomQuote.author}`
 
-            //console.log(`Quote1:${quotes[0].quote}Author:${quotes[0].author}`) ///ceea ce trebuie sa obtin
+           // console.log(randomQuote)
+
+            console.log(`Quote:${randomQuote.quote}Author:${randomQuote.author}`) ///ceea ce trebuie sa obtin
             
             
 
