@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+<body>
+
+    <label id="counter">Counter value</label>
+    <div>
+        <button id="plus">Plus</button>
+        <button id="minus">Minus</button>
+
+    </div>
+
+
+
+
+    <script>
+
+        let plusBtn = document.getElementById("plus")
+        let minusBtn = document.getElementById("minus")
+        let counter = document.getElementById("counter")
+
+        plusBtn.addEventListener('click', increment)
+        minusBtn.addEventListener('click', decrement)
+
+        let count = 1;
+
+        function increment() {
+            count++
+            counter.innerHTML = `Counter:${count}`
+            console.log(`Counter:${count}`)
+        }
+
+        function decrement() {
+            count--
+            counter.innerHTML = `Counter:${count}`
+            console.log(`Counter:${count}`)
+        }
+
+
+
+       //acesta functie nu functioneaza
+        
+        // function updateCounter () {  
+        //     if (plusBtn.clicked == true){
+        //         count++
+        //         counter.innerHTML = `Counter:${count}`
+        //         console.log(`Counter:${count}`)
+               
+        //     }
+        //     if(minusBtn.clicked == true) {
+               
+        //         count--
+        //         counter.innerHTML = `Counter:${count}`
+        //         console.log(`Counter:${count}`)
+           
+        //     }
+        // }
+
+    </script>
+    
+</body>
+</html>
