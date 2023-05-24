@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes</title>
+    <style>
+        div{
+            text-align: center;
+            margin: 50px auto ;
+
+        }
+
+        div button{
+            padding: 10px 20px;
+            font-family: 'Courier New';
+            border-radius: 50%;
+            background-color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+
+        }
+
+        div p{
+            font-size: 24px;
+            font-family: 'Courier New';
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button>Click me for a different quote </button>
+    
+        <p id="text">Hello</p>
+
+    </div>
+
+
+    <script>
+
+        let btn = document.querySelector("button")
+
+        btn.addEventListener("click", updateQuote)
+
+        const quotes = [
+            {quote:"Eighty percent of success is showing up.", author: "Woody Allen"},
+            {quote:"Ask not what your country can do for you; ask what you can do for your country." , author: "John Kennedy" },
+            {quote:"If at first you don’t succeed, try, try again.", author: "W. E. Hickson" },
+            {quote:"If you want something said, ask a man; if you want something done, ask a woman.", author: "Margaret Thatcher"}
+        ]
+
+        function updateQuote() {
+            let randomIndex = Math.floor( Math.random() * quotes.length )
+          
+            let randomQuote = quotes[randomIndex]
+
+            let p = document.getElementById("text")
+
+            p.innerHTML = `<q><i>${randomQuote.quote}</i></q> ${randomQuote.author}`
+
+           // console.log(randomQuote)
+
+            console.log(`Quote:${randomQuote.quote}Author:${randomQuote.author}`) ///ceea ce trebuie sa obtin
+            
+            
+
+        }
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
