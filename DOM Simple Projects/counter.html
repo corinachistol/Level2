@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <label id="counter">Counter value</label>
+    <label id="counter">Counter value:1</label>
     <div>
         <button id="plus">Plus</button>
         <button id="minus">Minus</button>
@@ -23,20 +23,33 @@
         let minusBtn = document.getElementById("minus")
         let counter = document.getElementById("counter")
 
-        plusBtn.addEventListener('click', increment)
-        minusBtn.addEventListener('click', decrement)
-
         let count = 1;
+
+        plusBtn.addEventListener('click', () => {
+            count++
+            counter.innerHTML = `Counter value:${count}`
+            console.log(`Counter:${count}`)
+        })
+        
+        minusBtn.addEventListener('click', () => {
+            count--
+            if ( count < 1 ) {
+                count = 1 ;
+            }
+            counter.innerHTML = `Counter value:${count}`
+            console.log(`Counter:${count}`)
+        })
+
 
         function increment() {
             count++
-            counter.innerHTML = `Counter:${count}`
+            counter.innerHTML = `Counter value:${count}`
             console.log(`Counter:${count}`)
         }
 
         function decrement() {
             count--
-            counter.innerHTML = `Counter:${count}`
+            counter.innerHTML = `Counter value:${count}`
             console.log(`Counter:${count}`)
         }
 
