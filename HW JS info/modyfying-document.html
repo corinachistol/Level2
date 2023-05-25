@@ -7,7 +7,48 @@
 </head>
 <body>
 
+    <ul>
+        <li>Animals
+          <ul>
+            <li>Mammals
+              <ul>
+                <li>Cows</li>
+                <li>Donkeys</li>
+                <li>Dogs</li>
+                <li>Tigers</li>
+              </ul>
+            </li>
+            <li>Other
+              <ul>
+                <li>Snakes</li>
+                <li>Birds</li>
+                <li>Lizards</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Fishes
+          <ul>
+            <li>Aquarium
+              <ul>
+                <li>Guppy</li>
+                <li>Angelfish</li>
+              </ul>
+            </li>
+            <li>Sea
+              <ul>
+                <li>Sea trout</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+    </ul>
+    
+
+    <div id="container"></div>
+
     <script>
+    //1. Create a list
         let ul = document.createElement("ul");
         document.body.append(ul);
 
@@ -23,45 +64,86 @@
         ul.append(li);
 
         }
+    //2. Create a tree from the object
+        let data = {
+            "Fish": {
+                "trout": {},
+                "salmon": {} 
+            },
+            "Tree": {
+                "Huge": {
+                    "sequoia": {},
+                    "oak": {} 
+                }
+            },
+            "Flowering": {
+                "apple tree": {},
+                "magnolia": {} 
+            },
+        }
+
+        //     // solution with innerHTML
+        // function createTree(container, obj) {
+        //     container.innerHTML = createTreeText(obj)
+        // }
+
+        // function createTreeText(obj) {
+        //     let li = "";
+        //     let ul ;
+        //     for (let key in obj) {
+        //         li += '<li>' + key + createTreeText(obj[key]) +   '</li>'
+        //     }
+
+        //     if( li) {
+        //         ul = '<ul>' + li + '</ul>'
+        //     }
+
+        //     return ul || '';
+        // }
+        // createTree(container, data);
+
+        // solution with DOM
+        function createTree(container,obj) {
+            container.append(createTreeDom(obj))
+        }
+
+        function createTreeDom(obj) {
+            if(!Object.keys(obj).length) return;
+
+            let ul = document.createElement("ul")
+
+            for(let key in obj) {
+                let li = document.createElement("li")
+                li.innerHTML = key;
+
+                let childrenUl = createTreeDom(obj[key])
+
+                if(childrenUl){
+                    li.append(childrenUl)
+                }
+                ul.append(li)
+            }
+            return ul
+        }
+        let container = document.getElementById("container")
+        createTree(container,data)
+
+
+        
+    //3..Show descendants in a tree
+
+    let lists = document.querySelectorAll("li")
+    for (let li of lists) {
+        let count = li.getElementsByTagName('li').length
+        if(!count) continue
+        li.firstChild.data += '[' + count + ']'
+    }
+
 
     </script>
+
+  
     
 </body>
 </html>
-
-<script>
-
-// 2.Clear the element
-// importance: 5
-// Create a function clear(elem) that removes everything from the element.
-
-// function clear(elem) {
-//     document.getElementById("elem").remove() //varianta mea
-// }
-
-// // Raspunsurile corecte
-// function clear(elem) {
-//     elem.innerHTML = ""
-// }
-
-// function clear(elem) {
-//     while(elem.firstChild) {
-//         elem.firstChild.remove()
-//     }
-// }
-
-// Create a list
-
-// Write an interface to create a list from user input.
-
-// For every list item:
-
-// Ask a user about its content using prompt.
-// Create the <li> with it and add it to <ul>.
-// Continue until the user cancels the input (by pressing Esc or via an empty entry).
-// All elements should be created dynamically.
-
-// If a user types HTML-tags, they should be treated like a text.
-
-</script>
 
