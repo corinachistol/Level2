@@ -14,20 +14,19 @@
 
 //TYPE
 class Task {
-    constructor (title, deadline, done) {
+    constructor (title, deadline) {
         this.title    = title
         this.deadline = deadline
-        this.done = false
+        this.done     = false
 
         this.assignee = null  // --->reference to an User() object
 
     }
 
     //HW1:
-    markAsDone(  ) {
-        if(this.done === false){
-            this.done  = true 
-        }
+    markAsDone( ) {
+        this.done  = true 
+        
     }
     
    
@@ -51,28 +50,31 @@ class User {
     }
 
    
-    
-    // allDoneTasks(task) {
-    //     if(task instanceof Task &&) {
-    //         return 
-
-    //     }
+    //HW2:
+    allDoneTasks() {
+        //HW1:rewrite the solution using for =if
+        let doneTasks = this.tasks.map( (task, idx ) => {
+            task[idx].done = true
+            return doneTasks
+        } )
         
-    // }
+    }
 }
 
 //give 2 tasks to a user
 let taskProject1 = new Task ("finish project 1", "01-01-2023")
 let taskProject2 = new Task ("finish project 2", "01-02-2023")
+let taskProject3 = new Task ("finish project 3", "01-03-2023")
 
 taskProject1.markAsDone() // functioneaza 
-userDev.markAsDone(taskProject1) // asa nu functioneaza
+userDev.markAsDone(taskProject1) // asa nu functioneaza, pentru ca metoda nu asteapta argumenti
 
 
 let userDev = new User ("John Doe", "developer")
 
 userDev.assignTask(taskProject1)
 userDev.assignTask(taskProject2)
+userDev.assignTask(taskProject3)
 
 
 
