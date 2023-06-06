@@ -56,7 +56,10 @@ class User {
         //HW2:rewrite the solution with findIndex() + splice()   
         // aici se primeste conditia inversa a lui filter
         let index =  this.tasks.findIndex( task => task.title = title )
-        return this.tasks = this.tasks.splice(index, 1) 
+        
+        // taskul eliminat ar trebui sa devina available pentru alt user
+        this.done[index] = false
+        return this.tasks.splice(index, 1) 
 
         // using for + if create a copy
     }
