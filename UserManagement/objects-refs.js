@@ -53,9 +53,10 @@ class User {
     unassignTask(title) {
         //this.tasks = this.tasks.filter( task => task.title != title )
         
-        //HW2:rewrite the solution with findIndex() + splice()
-        let index =  this.tasks.findIndex( (task) => task.title != title )
-        return this.tasks.splice(index, 1)
+        //HW2:rewrite the solution with findIndex() + splice()   
+        // aici se primeste conditia inversa a lui filter
+        let index =  this.tasks.findIndex( task => task.title = title )
+        return this.tasks = this.tasks.splice(index, 1) 
 
         // using for + if create a copy
     }
@@ -63,19 +64,19 @@ class User {
    
     //HW2:
     allDoneTasks() {
-        return this.tasks.filter( task => task.done )
+        //return this.tasks.filter( task => task.done )
         //return this.tasks.map(task => task.done)       // functioneaza
 
 
         //HW1:rewrite the solution using for =if
         //solution with for+if, dar imi da eroare "TypeError: Cannot read properties of undefined (reading '0')"
 
-        // let copyTasks = []
-        // for(let i = 0; i < this.tasks.length; i++){
-        //     if (this.tasks.done[i] == true) {
-        //         copyTasks.push(this.tasks.done[i])
-        //     }
-        // }
+        for(let i = 0; i < this.tasks.length; i++){
+            let copyTasks = []
+            if (this.tasks.done[i] == true) {
+               return copyTasks.push(this.tasks.done[i])
+            }
+        }
 
   
         
@@ -87,10 +88,10 @@ class User {
         
     }
 
-    //HW2:  returneaza un array gol ?
+    //HW2:  
     allPendingTasks() {
       
-        return this.tasks.filter( task => !task.done )    // nu functioneaza, am scris conditia task.done= false, task.done != true si in nici un fel nu merge!
+        return this.tasks.filter( task => !task.done )    
  
     }
 }
