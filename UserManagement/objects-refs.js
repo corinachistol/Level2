@@ -28,9 +28,9 @@ class Task {
         this.done  = true 
         
     }
-    
-   
 }
+
+
 
 class User {
     constructor(name, job) {
@@ -49,15 +49,49 @@ class User {
         }
     }
 
+    //HW:3
+    unassignTask(title) {
+        //this.tasks = this.tasks.filter( task => task.title != title )
+        
+        //HW2:rewrite the solution with findIndex() + splice()
+        let index =  this.tasks.findIndex( (task) => task.title != title )
+        return this.tasks.splice(index, 1)
+
+        // using for + if create a copy
+    }
+
    
     //HW2:
     allDoneTasks() {
+        return this.tasks.filter( task => task.done )
+        //return this.tasks.map(task => task.done)       // functioneaza
+
+
         //HW1:rewrite the solution using for =if
-        let doneTasks = this.tasks.map( (task, idx ) => {
-            task[idx].done = true
-            return doneTasks
-        } )
+        //solution with for+if, dar imi da eroare "TypeError: Cannot read properties of undefined (reading '0')"
+
+        // let copyTasks = []
+        // for(let i = 0; i < this.tasks.length; i++){
+        //     if (this.tasks.done[i] == true) {
+        //         copyTasks.push(this.tasks.done[i])
+        //     }
+        // }
+
+  
         
+              //eu asa scriam pina a vedea partea a 2 a tutorialului
+        // let doneTasks = this.tasks.map( (task,idx) => {
+        //     task[idx].done = true
+        //     return doneTasks
+        // } )
+        
+    }
+
+    //HW2:  returneaza un array gol ?
+    allPendingTasks() {
+      
+        return this.tasks.filter( task => !task.done )    // nu functioneaza, am scris conditia task.done= false, task.done != true si in nici un fel nu merge!
+ 
     }
 }
 
@@ -65,16 +99,16 @@ class User {
 let taskProject1 = new Task ("finish project 1", "01-01-2023")
 let taskProject2 = new Task ("finish project 2", "01-02-2023")
 let taskProject3 = new Task ("finish project 3", "01-03-2023")
+let taskProject4 = new Task ("finish project 4", "01-04-2023")
 
-taskProject1.markAsDone() // functioneaza 
-userDev.markAsDone(taskProject1) // asa nu functioneaza, pentru ca metoda nu asteapta argumenti
-
+//taskProject2.markAsDone() // functioneaza 
 
 let userDev = new User ("John Doe", "developer")
 
 userDev.assignTask(taskProject1)
 userDev.assignTask(taskProject2)
 userDev.assignTask(taskProject3)
+userDev.assignTask(taskProject4)
 
 
 
