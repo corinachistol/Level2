@@ -15,8 +15,8 @@ const visit = (element) => {
     }
     
     let children = element.children
-    children.forEach( child => { 
-        let index = children.index()
+    children.forEach(  index => console.log(`visit ${index}`)
+        
     } )
 }
 
