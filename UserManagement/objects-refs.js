@@ -55,13 +55,15 @@ class User {
         
         //HW2:rewrite the solution with findIndex() + splice()   
         // aici se primeste conditia inversa a lui filter
+
         // let index =  this.tasks.findIndex( task => task.title = title )
         // // taskul eliminat ar trebui sa devina available pentru alt user
         // this.done[index] = false
         // return this.tasks.splice(index, 1) 
 
-        //using for + if create a copy   ----> rezulta " TypeError: Cannot read properties of undefined (reading '0')"
+        //using for + if create a copy 
         let copyTasks = []
+
         for (let i = 0; i < this.tasks.length; i++){
             if ( this.tasks[i].title != title ){
                 copyTasks.push(this.tasks[i])
@@ -69,6 +71,7 @@ class User {
                 this.tasks[i].done = false
             }
         }
+
         return copyTasks
     }
 
@@ -80,7 +83,7 @@ class User {
 
 
         //HW1:rewrite the solution using for =if
-        //solution with for+if, dar imi da eroare "TypeError: Cannot read properties of undefined (reading '0')"
+        //solution with for+if
         let copyTasks = []
 
         for(let i = 0; i < this.tasks.length; i++){
@@ -105,8 +108,6 @@ let taskProject1 = new Task ("finish project 1", "01-01-2023")
 let taskProject2 = new Task ("finish project 2", "01-02-2023")
 let taskProject3 = new Task ("finish project 3", "01-03-2023")
 let taskProject4 = new Task ("finish project 4", "01-04-2023")
-
-//taskProject2.markAsDone() // functioneaza 
 
 let userDev = new User ("John Doe", "developer")
 
