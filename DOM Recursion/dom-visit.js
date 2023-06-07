@@ -10,14 +10,16 @@ const visit = (element) => {
     )
 
     //HW2:refactor the code using Array.forEach()
-    for(let index = 0; index < element.children.length; index++ ){
-        visit(element.children[index])
-    }
-    
     let children = element.children
-    children.forEach(  index => console.log(`visit ${index}`)
+        //transform HTML Collection into Array
+        //children = [...children]
+    Array.from(children).forEach( (child) => { visit (child)})
+    //children.forEach( (child,index) => { console.log( `visit ${child[index]}` )
         
-    } )
+    // });
+    // for(let index = 0; index < element.children.length; index++ ){
+    //     visit(element.children[index])
+    // }
 }
 
 visit(root)
