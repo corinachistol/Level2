@@ -13,6 +13,11 @@ const visit = (element) => {
     for(let index = 0; index < element.children.length; index++ ){
         visit(element.children[index])
     }
+    
+    let children = element.children
+    children.forEach( child => { 
+        let index = children.index()
+    } )
 }
 
 visit(root)
