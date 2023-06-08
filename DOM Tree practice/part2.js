@@ -27,17 +27,30 @@ class Element {
         }
     }
     //HW2: Part 2
-    removeChild( child ) {
-        if(child instanceof Element) {
-            for( let i = 0; i < child.length; i++ ) {
-                let found = Object.is( child, child[i] )
-                if(found != undefined ) {
-                    return found 
-                }
-                return this.children.splice(found, 1)
-            }
-        }
+    // removeChild( child ) {
+    //     if(child instanceof Element) {
+    //         for( let i = 0; i < child.length; i++ ) {
+    //             let found = Object.is( child, this.children[i] )
+    //             if(found ) {
+    //                 return found
+                    
+    //             }
+    //         }
+    //     }
+    //     return this.children.splice(found, 1)
         
+    // }
+
+    removeChild(child) {
+        if (child instanceof Element){
+           this.children.find( (child,i) => {
+                if( Object.is(child, this.children[i]) ){
+                    console.log(i)
+                    return child
+                }
+                return this.children.splice(i,1)
+            } )
+        }
     }
 }
 

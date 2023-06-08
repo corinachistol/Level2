@@ -17,7 +17,8 @@ class Element {
         return  `<${this.tagName}>${childFragment}</${this.tagName}>`
     }
 
-    appendChild(child) {
+    //HW1: Part1
+    appendChild( child ) {
         if(child instanceof Element){
             this.children.push(child)
 
