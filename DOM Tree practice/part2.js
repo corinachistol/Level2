@@ -34,8 +34,8 @@ class Element {
                 if(found != undefined ) {
                     return found 
                 }
+                return this.children.splice(found, 1)
             }
-            this.children.splice(found, 1)
         }
         
     }
