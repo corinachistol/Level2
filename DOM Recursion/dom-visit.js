@@ -13,6 +13,9 @@ const visit = (element) => {
     let children = element.children
         //transform HTML Collection into Array
         //children = [...children]
+
+
+
     Array.from(children).forEach( (child) => { visit (child)})
         
     // });
@@ -22,3 +25,50 @@ const visit = (element) => {
 }
 
 visit(root)
+
+
+    /*
+    
+        DOM 
+            element{
+                children[
+                    0------> element{}
+                    1------> element{}
+                ]
+            }
+        
+                                ^   ^
+                                ^   ^
+        Array [                 ^   ^
+            0-------------------    ^
+            1-----------------------
+        ]
+
+## DIFERENTA INTRE FOR  vs forEACH()
+
+        c1: visit(root)
+         ^
+         ^            for() /  for-ul este invizibil, se face o legatura directa intre primul apel si urmatoarele
+         ^          
+         ^           Atunci cind lucrezi cu control flow(for, while,if,etc.), ai recursia pura si se autoapeleaza functia
+         ^
+         ^           c2: visit(child_0)
+         ----------  c3: visit(child_1)
+        return-ul din c2 si c3 se duce in functia initiala
+
+
+    
+        c1: visit(root)
+
+                    Aici recursia e prin functia intermediara
+                    .forEach()  Apare un strat intermediar intre primul apel al functiei si urmatoarele
+                    ^
+                    ^    call intermediate: arrow()
+                    ^
+                    ^        c2: visit(child_0)
+              return^ -------c3: visit(child_1)
+        de aici se duce direct in foraEach() care nu are ce face cu el si de fapt returnam nimic 
+    
+    
+    */
+

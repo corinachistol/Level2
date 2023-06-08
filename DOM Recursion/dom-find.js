@@ -20,20 +20,19 @@ const find = (element, what) => {
     //         return found;
     //     }
     // }
+ 
+    // let found = null
+    // Array.from(element.children).forEach( child => {
+    //     found = find(child, what) ?? found
+    // } )
+    // return found
 
-    let children = element.children
-    let shouldBreak = false
-    Array.from(children).forEach( child => {
-        let found = find(child, what);
-        if( found != undefined){
-            return found
-        }
-        return child
-        
+    Array.from(element.children).find( child => {
+        return find(child,what)
         
     } )
 }
 
 //////using DFS///////
-let found = find(root,"1.2.1")
-console.log(`FOUND it in element:`, found)
+let found = find(root,"1.2")
+console.log(`FOUND it in element: `, )
