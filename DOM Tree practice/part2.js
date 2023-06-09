@@ -26,31 +26,34 @@ class Element {
             console.log('Only objects of Class Element are allowed!')
         }
     }
-    //HW2: Part 2
+    //HW2: Part 2   // prin for nu reusesc
     // removeChild( child ) {
     //     if(child instanceof Element) {
     //         for( let i = 0; i < child.length; i++ ) {
-    //             let found = Object.is( child, this.children[i] )
-    //             if(found ) {
-    //                 return found
+    //             if ( Object.is( child, this.children[i] ) ) {
                     
+    //                 return this.children.splice(i, 1)
     //             }
+                
     //         }
+            
     //     }
-    //     return this.children.splice(found, 1)
         
     // }
 
-    removeChild(child) {
-        if (child instanceof Element){
-           this.children.find( (child,i) => {
-                if( Object.is(child, this.children[i]) ){
-                    console.log(i)
-                    return child
-                }
-                return this.children.splice(i,1)
+        //prin find merge
+    removeChild(child) {  // child este de tip Obiect ,Element ()
+        if (child instanceof Element){     // daca child este de tip Element
+           this.children.find( (child,i) => {      //cauta in arayul children elementul child de pe pozitia i
+            if( Object.is(child, this.children[i]) ) {  // Object.is returneaza true = found , daca elementul care dorim sa-l stergem coincide cu un copil din colectia children
+            
+            }
+            
+            return this.children.splice(i,1)  // stergem 1 element copil de pe pozitia i gasit din arrayul children
             } )
+            
         }
+        
     }
 }
 
