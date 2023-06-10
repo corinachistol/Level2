@@ -26,7 +26,7 @@ class Element {
             console.log('Only objects of Class Element are allowed!')
         }
     }
-    //HW2: Part 2   // prin for nu reusesc
+    //HW2: Part 2   // prin for merge
     removeChild( child ) {
         if(child instanceof Element) {
             for( let i = 0; i < this.children.length; i++ ) {
