@@ -9,8 +9,8 @@
 
     <label id="counter">Counter value:1</label>
     <div>
-        <button id="plus">Plus</button>
-        <button id="minus">Minus</button>
+        <button id="plus" >Plus</button>
+        <button id="minus" >Minus</button>
 
     </div>
 
@@ -19,59 +19,62 @@
 
     <script>
 
-        let plusBtn = document.getElementById("plus")
-        let minusBtn = document.getElementById("minus")
+        // let plusBtn = document.getElementById("plus")
+        // let minusBtn = document.getElementById("minus")
         let counter = document.getElementById("counter")
 
         let count = 1;
 
-        plusBtn.addEventListener('click', () => {
-            count++
-            counter.innerHTML = `Counter value:${count}`
-            console.log(`Counter:${count}`)
-        })
-        
-        minusBtn.addEventListener('click', () => {
-            count--
-            if ( count < 1 ) {
-                count = 1 ;
-            }
-            counter.innerHTML = `Counter value:${count}`
-            console.log(`Counter:${count}`)
-        })
-
-
-        // function increment() {
+        // plusBtn.addEventListener('click', () => {
         //     count++
         //     counter.innerHTML = `Counter value:${count}`
         //     console.log(`Counter:${count}`)
-        // }
-
-        // function decrement() {
+        // })
+        
+        // minusBtn.addEventListener('click', () => {
         //     count--
+        //     if ( count < 1 ) {
+        //         count = 1 ;
+        //     }
         //     counter.innerHTML = `Counter value:${count}`
         //     console.log(`Counter:${count}`)
-        // }
+        // })
 
 
 
-       //acesta functie nu functioneaza
-        
-        // function updateCounter () {  
-        //     if (plusBtn.clicked == true){
-        //         count++
-        //         counter.innerHTML = `Counter:${count}`
-        //         console.log(`Counter:${count}`)
+       function updateCounter (e) {  
+            if (e.target.innerText === "Plus"){
+                count++
+                counter.innerHTML = `Counter value:${count}`
+                console.log(`Counter:${count}`)
+              
                
-        //     }
-        //     if(minusBtn.clicked == true) {
-               
-        //         count--
-        //         counter.innerHTML = `Counter:${count}`
-        //         console.log(`Counter:${count}`)
+            }
+            if(e.target.innerText === "Minus") {
+                count--
+                if ( count < 1 ) {
+                    count = 1 ;
+                }
+                counter.innerHTML = `Counter value:${count}`
+                console.log(`Counter:${count}`)
            
-        //     }
-        // }
+            }
+        }
+
+        // a. select needed eements
+        let buttons = document.getElementsByTagName('button')
+        // b. bind event handler to each one
+        for(let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', updateCounter)
+        }
+        
+       
+
+        //EVENT HANDLING
+        // 1. each event is an Object
+        // 2. the event Object contains data
+        // 3. events are 'traversing' the dom
+        //bubbling & captures
 
     </script>
     
