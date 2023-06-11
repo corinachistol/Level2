@@ -11,28 +11,36 @@ const find = (element, what) => {
     }
 
     //HW3: refactor the code using Array.forEach()
-
+    let found = null
             //ciclul se plimba prin toti copii elementului 
     // for (let index = 0; index < element.children.length; index++) {
     //         //apelam functia recursiva si daca gaseste divul cautat , il culegem in variabila found
-    //     let found = find(element.children[index], what);
+    //     found = find(element.children[index], what);
     //     if (found != undefined) {
-    //         return found;
+    //         break;
     //     }
     // }
  
-    // let found = null
+  
     // Array.from(element.children).forEach( child => {
     //     found = find(child, what) ?? found
     // } )
-    // return found
+   
+    
+    // find()---> .find() ---> callback()
+    //  <--------return  <---- true/ false return
 
-    Array.from(element.children).find( child => {
-        return find(child,what)
+    found = Array.from(element.children).find( child => {
+       // ?? when this is the right element  ??--> optimizare
+       return find(child, what)
+        
         
     } )
+
+    return found
+
 }
 
 //////using DFS///////
-let found = find(root,"1.2")
-console.log(`FOUND it in element: `, )
+let found = find(root,"1.3.1")
+console.log(`FOUND it in element: `,found )
