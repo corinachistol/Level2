@@ -17,8 +17,6 @@ class Developer {
         return JSON.parse( value )
 
     }
-
-
 }
 
 let dev1 = new Developer("John", 10, ["JS", "CSS"])
