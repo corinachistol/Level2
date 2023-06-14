@@ -13,9 +13,16 @@ class Developer {
         })
     }
 
-    fromJSON(value){
-        return JSON.parse( value )
+    fromJSON(str){
+        let copy = JSON.parse( str )
+        console.log(copy)
 
+        let text = "";
+        for (let value  in copy ){
+            text += copy[value] + " "
+        }
+        
+        return text
     }
 }
 
