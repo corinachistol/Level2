@@ -1,4 +1,4 @@
-//Custom Logger
+f//Custom Logger
 
 //remember the ref to old console
 let _console = window.console
@@ -22,9 +22,11 @@ let console = {
     //for compatibility with what the browser wants
     assert: function() {},
 
-   cursor : {
-    startPosition: 0,
-    endPosition: history.deepCopyOfValue
+   cursor : function () {
+      return this.history.indexOf({
+           "message": mesage,
+           "value":deepCopyOfValue
+       })
    },
    
     //HW1:
