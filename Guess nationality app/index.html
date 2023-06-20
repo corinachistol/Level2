@@ -1,0 +1,82 @@
+
+<!-- 
+    
+
+    Woring with WEB data APIs
+    -----------------------------
+    GUESS NATIONALITY BASED ON THE NAME|APP
+
+    * HTML:
+        * forms
+        * id
+
+    *CSS:
+        * colors
+        * blocks
+        * box model
+
+    JS: 
+        * JSON
+        * ODM
+        * fetch / ajax
+
+
+
+
+    [FRONT | WEB APP]                                       [BACK \ APP]
+    (HTML, CSS, JS)                                         (PHP, JAVA, Python, JS, SQL )
+                                    fetch/ajax
+                                        v
+            client logic <------------req / res ---------------- > server logic  (public API = public Application Programmin Interface)
+
+
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS APP | Guessing NATIONALITY</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+
+    <form id="form-name" action="">
+        <h1>This app tells you where are you from :) </h1>
+        <h2>To do that, input your name below  and hit enter</h2>
+
+        <label>
+            <input 
+                type="text" 
+                placeholder="Your name here..."
+                autofocus
+                required
+            >
+                                    
+            <!--                    ^
+                Browser observes this input 
+                                    |
+                                    addEventListener ('keydown', default)
+                                    function default(){
+                                        of(event.code == "Enter") {
+                                           // 1.get form data
+                                           // 2.send it over network
+                                           // 3. emit event 'submit'
+                                        }
+                                    }
+            
+            -->
+        </label>
+
+        <div class="output">
+          
+        </div>
+    </form>
+    
+    <script src="app.js"></script>
+</body>
+</html>
