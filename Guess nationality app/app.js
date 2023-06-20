@@ -15,8 +15,6 @@ form.addEventListener('submit', (e) => {
     //      * dont send empty requests    ---> required
     //      * remove extra spaces         ---> trim()
   
-
-    //HW2: check when empty response and show a corresponding message
     console.log(name)
 
     //Ca sa faci un request catre server prin APi, cu ajutorul ajax:
@@ -34,6 +32,8 @@ form.addEventListener('submit', (e) => {
         console.log(data)  // in consola avem obiect
         let nationality = data.country[0].country_id
 
+        //HW2: check when empty response and show a corresponding message
+        
         // if(!data){
         //     console.log("We cant process your request!")
         // }
