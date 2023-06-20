@@ -1,0 +1,42 @@
+<!-- 
+
+    IMAGE VALIDATION USING MACHINE LEARNING
+
+    * using external libraries
+    * machine learning ML
+    * models
+    * tensorflow
+    * uploading images
+
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image validation using ML</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+    <h1>Image validation using ML</h1>
+    
+    <form id="form-upload">
+        <h2>Upload the image below</h2>
+        <!-- Acest input uploadeaza poza si o salveaza in memorie + detaliile acesteia.  Pe server nu poate fi incarcata fara js -->
+        <input type="file">
+        <hr>
+        <img src="" alt="preview">
+    </form>
+
+    <!-- TF + Ml  Aceasta este biblioteca care ofera functionalitatea de a conecta asa gen de modele si a le utiliza-->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+
+    <!-- MicroCreier virtual pe care il aplicam -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
+
+    <script src="app.js"></script>
+</body>
+</html>

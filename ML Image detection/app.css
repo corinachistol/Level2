@@ -1,0 +1,34 @@
+body{
+    background-color: #234;
+    color: white;
+    text-align: center;
+}
+
+/* 
+      input
+        ^
+    [upload icon] <------------click
+*/
+
+#form-upload input{
+    width: 225px;
+    height: 225px;
+    position: relative;
+}
+
+#form-upload input:after{
+    content: "";
+    display: block;
+    width: 225px;
+    height: 225px;
+    background-image: url(img\ icon.png);
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+#form-upload img {
+    /* width: 400px; */
+    display: none;
+}
