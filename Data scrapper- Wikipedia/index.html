@@ -1,0 +1,120 @@
+
+<!--  Video 505
+
+    WEB SCRAPPER: o aplicatie ,componenta care poate scana date de pe site-uri straine
+        * AJAX
+        * DOM
+        * ARRAY
+        * OOP
+
+
+
+  ------------BROWSER------------               HTTP
+                                |      
+         app(js / front) ------- > Request-------- > server
+                        <--------  Response ------<
+                                |    text
+                                v
+                            dom parser
+                                |
+                                v
+                            dom structure
+                                |
+                                v
+                                data
+|                                |
+---------------------------------
+
+
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scrapper</title>
+</head>
+<body>
+
+    <script>
+
+        const URL = "https://en.wikipedia.org/wiki/List_of_programming_languages"
+        //let languages=[]
+
+        //using ajax to communciate with wiki server in background
+        function loadPage() {
+            const xhr = new XMLHttpRequest()
+
+            xhr.open("GET", URL)
+
+            xhr.onload = () => {
+                //parse the doc
+                let html    = xhr.responseText   // string 
+                let parser =  new DOMParser()
+                let htmlDoc = parser.parseFromString(html, "text/html")  //DOm structure
+
+                //traverse the dom
+                // & scrape
+                let languages = []
+                let divs = htmlDoc.querySelectorAll('.div-col')
+                let div = divs[9]
+                let lis = div.firstElementChild.children
+                //console.log(lis)
+                // for(let i=0; i< lis.length; i++) {
+                //     languages.push( lis[i].firstElementChild.innerText )  
+                // }
+
+
+                Array.from(lis).forEach( (li) =>{
+                    languages.push(li.firstElementChild.innerText)
+                } )
+
+
+                //HW1: render the gathered info into a html table intr-o coloana
+                //using DOM OOP aproach
+
+                //render(languages)
+
+                
+                //console.log(htmlDoc) // este un document in memorie care s-a incarcat de pe wikipedia
+                console.log(languages)
+            }
+
+            xhr.send()
+        }
+
+        const render = (languages) =>{
+            const table = document.createElement('table')
+            const tbody = document.createElement('tbody')
+
+            for(let i=0; i<1; i++){
+               const row = document.createElement("tr")
+
+               for(let j=0; j<languages.length; j++){
+                const cell = document.createElement("td")
+                const cellText = document.createTextNode( language[j] )
+                
+                cell.appendChild(cellText)
+                row.appendChild(cell)
+               }
+
+               tbody.appendChild(row)
+            }
+
+            table.appendChild(tbody)
+
+            document.body.appendChild(table)
+            table.setAttribute("border",2)
+        }
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
