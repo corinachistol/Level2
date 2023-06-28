@@ -1,7 +1,7 @@
 //video 501_a
 //input output functions
+let numbers = []
 const getNumbers = (cb, size = 10 ) => {
-    let numbers = []
     
     // setTimeout( ()=>{
     //     while( numbers.length < size ){
@@ -25,18 +25,32 @@ const getNumbers = (cb, size = 10 ) => {
 }
 
 //process functions
-const maxNumber = (cb,numbers) => {
-    //HW1: think another way to get the max value
-    let maxNumber = numbers[0]
-    setTimeout( ()=> {
-        for( let i=0; i<numbers.length; i++ ){
-            if( numbers[i] > maxNumber ){
-                maxNumber = numbers[i]
-            }
-        }
-        cb(maxNumber)
-    },Math.random() * 3000 )
+// const maxNumber = (cb,numbers) => {
+//     //HW1: think another way to get the max value
+//     let maxNumber = numbers[0]
+//     setTimeout( ()=> {
+//         for( let i=0; i<numbers.length; i++ ){
+//             if( numbers[i] > maxNumber ){
+//                 maxNumber = numbers[i]
+//             }
+//         }
+//         cb(maxNumber)
+//     },Math.random() * 3000 )
   
+// }
+
+const maxNumber = (numbers, size = 10 ) =>{
+    if(numbers.length == size){  //nu funcrioneaza
+        //let max = Math.max(numbers)
+        let max = numbers.reduce( (a,b)=>{Math.max(a,b)}, - Infinity )
+
+
+        //console.log( max)
+
+        return max
+    }
+
+    
 }
 
 //render
