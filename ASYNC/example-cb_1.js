@@ -1,14 +1,26 @@
+//video 501_a
 //input output functions
 const getNumbers = (cb, size = 10 ) => {
     let numbers = []
     
-    setTimeout( ()=>{
-        while( numbers.length < size ){
-            //HW2: setInterval(), sa repete operatiunea acesta, cite un push peste citeva secunde random. si doar cind s-a ajuns la size.length sa se considere ca operatiunea sa incheiat
-            numbers.push( Math.ceil( -5 + Math.random() * 10 ) )
+    // setTimeout( ()=>{
+    //     while( numbers.length < size ){
+    //         //HW2: setInterval(), sa repete operatiunea acesta, cite un push peste citeva secunde random. si doar cind s-a ajuns la size.length sa se considere ca operatiunea sa incheiat
+    //         numbers.push( Math.ceil( -5 + Math.random() * 10 ) )
+    //     }
+    //     cb(numbers )
+    // }, Math.random() * 3000 )
+
+    let timer = setInterval( function(){
+        numbers.push( Math.ceil( -5 + Math.random() * 10 ) )
+        console.log(numbers)
+        if(numbers.length === size){
+            cb(numbers)
+            clearInterval(timer)
         }
-        cb(numbers )
-    }, Math.random() * 3000 )
+
+    },Math.random() * 3000 )
+
 
 }
 
