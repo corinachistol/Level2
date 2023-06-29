@@ -24,7 +24,7 @@ const getNumbers = (cb, size = 10 ) => {
 
 }
 
-//process functions
+//process functions   I varianta pentru max
 // const maxNumber = (cb,numbers) => {
 //     //HW1: think another way to get the max value
 //     let maxNumber = numbers[0]
@@ -34,23 +34,16 @@ const getNumbers = (cb, size = 10 ) => {
 //                 maxNumber = numbers[i]
 //             }
 //         }
-//         cb(maxNumber)
 //     },Math.random() * 3000 )
-  
+//     cb(maxNumber)
+
 // }
 
-const maxNumber = (numbers, size = 10 ) =>{
-    if(numbers.length == size){  //nu funcrioneaza
-        //let max = Math.max(numbers)
-        let max = numbers.reduce( (a,b)=>{Math.max(a,b)}, - Infinity )
-
-
-        //console.log( max)
-
-        return max
-    }
-
-    
+                // II si a III varianta pentru max
+const maxNumber = (cb, numbers ) =>{
+    let max = Math.max(...numbers)
+    //let max = numbers.reduce( (a,b) => Math.max(a,b), -Infinity )
+    cb(max)
 }
 
 //render
@@ -60,7 +53,7 @@ const renderNumber = (number) => {
 
 ////////////////
 getNumbers( (numbers) => {
-    maxNumber(renderNumber,numbers)
+   maxNumber(renderNumber,numbers)
 }
 
 )
