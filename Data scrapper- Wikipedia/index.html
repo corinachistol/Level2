@@ -66,6 +66,9 @@
                 //     languages.push( lis[i].firstElementChild.innerText )  
                 // }
 
+                // lis = [...lis].forEach( (li) =>{
+                //     languages.push(li.firstElementChild.innerText)
+                // } )
 
                 Array.from(lis).forEach( (li) =>{
                     languages.push(li.firstElementChild.innerText)
@@ -84,21 +87,26 @@
 
             xhr.send()
         }
+        loadPage()
+        
 
-        const render = (languages) =>{
+       
+
+        const render = (loadPage) =>{
+            debugger
             const table = document.createElement('table')
             const tbody = document.createElement('tbody')
 
-            for(let i=0; i<1; i++){
+            for(let i=0; i<25; i++){ // languages.length in loc de 20, dar languages = f() si nu functioneaza
                const row = document.createElement("tr")
 
-               for(let j=0; j<languages.length; j++){
+               for(let j=0; j<1; j++){
                 const cell = document.createElement("td")
-                const cellText = document.createTextNode( language[j] )
+                const cellText = document.createTextNode( `i can`)
                 
                 cell.appendChild(cellText)
                 row.appendChild(cell)
-               }
+            }
 
                tbody.appendChild(row)
             }
@@ -109,10 +117,7 @@
             table.setAttribute("border",2)
         }
 
-
-
-
-
+        render(loadPage)
 
     </script>
     
