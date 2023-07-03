@@ -78,22 +78,23 @@
                 //HW1: render the gathered info into a html table intr-o coloana
                 //using DOM OOP aproach
 
-                //render(languages)
+                //render()
 
                 
                 //console.log(htmlDoc) // este un document in memorie care s-a incarcat de pe wikipedia
                 console.log(languages)
+                
+                return languages
             }
 
             xhr.send()
         }
-        loadPage()
+        
         
 
        
 
-        const render = (loadPage) =>{
-            debugger
+        const render = () =>{
             const table = document.createElement('table')
             const tbody = document.createElement('tbody')
 
@@ -117,7 +118,35 @@
             table.setAttribute("border",2)
         }
 
-        render(loadPage)
+        render()
+
+        // class Table{
+        //     constructor(row,col,cell){
+        //         this.row = row
+        //         this.col = col
+        //         this.cell = cell
+        //     }
+
+        //     render(){
+        //         const table = document.createElement('table')
+        //         const tbody = document.createElement('tbody')
+        //         const row = document.createElement("tr")
+        //         const cell = document.createElement("td")
+        //         const cellText = document.createTextNode( `i can`)
+
+        //         document.body.appendChild(table)
+        //         table.setAttribute("border",2)
+        //         table.appendChild(tbody)
+        //         tbody.appendChild(row)
+        //         row.appendChild(cell)
+        //         cell.appendChild(cellText)
+
+        //     }
+        // }
+
+        let table = new Table(1,1,10)
+        table.render()
+
 
     </script>
     
