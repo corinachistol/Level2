@@ -82,6 +82,15 @@
                     image: ".single-article .lazyload"
                 }
             },
+            {
+                name: "Tekwill News",
+                url: "https://tekwill.md/",
+                param: "s",
+                domMapping: {
+                    title: ".jupiterx-post h2",
+                    image: ".jupiterx-post img"
+                }
+            },
         ]
 
         const formElement = document.querySelector("#form")
@@ -101,7 +110,7 @@
             // extragem fraza cheir
             let keyPhrase = inputElement.value
            
-            sendSearch(config[2], keyPhrase)
+            sendSearch(config[3], keyPhrase)
 
         }
 
@@ -154,6 +163,7 @@
                     })
                     console.log(news)
                 }
+
                 render(news, contentElement)
 
             }
