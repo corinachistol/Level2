@@ -1,6 +1,6 @@
 
 
-<!-- 
+<!--  video 506
 
     NEWS AGGREGATOR:
         * gather news on specific keywords
@@ -76,7 +76,11 @@
             {
                 name: "PublikaTV News",
                 url: "https://www.publika.md/cauta/",
-                param: "q"
+                param: "q",
+                domMapping: {
+                    title: ".single-article .entry-title",
+                    image: ".single-article .lazyload"
+                }
             },
         ]
 
@@ -97,7 +101,7 @@
             // extragem fraza cheir
             let keyPhrase = inputElement.value
            
-            sendSearch(config[1], keyPhrase)
+            sendSearch(config[2], keyPhrase)
 
         }
 
@@ -146,8 +150,9 @@
                 for(let i=0; i< titleElements.length; i++){
                     news.push({
                         title:titleElements[i].innerText,
-                       img_src: imageElements[i].src
+                        img_src: imageElements[i].src
                     })
+                    console.log(news)
                 }
                 render(news, contentElement)
 
