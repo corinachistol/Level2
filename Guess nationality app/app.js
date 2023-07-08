@@ -10,12 +10,13 @@ form.addEventListener('submit', (e) => {
     //alert('The browser tries to submit this form!')
 
     let name = input.value.trim()
+    console.log(name)
 
     // HW1: validate & sanitize the input
     //      * dont send empty requests    ---> required
     //      * remove extra spaces         ---> trim()
   
-    console.log(name)
+
 
     //Ca sa faci un request catre server prin APi, cu ajutorul ajax:
     //facem un request pe server, cream un obiect din clasa XMLHttpRequest
@@ -30,7 +31,7 @@ form.addEventListener('submit', (e) => {
         let data = JSON.parse(response)
         console.log(response)  // in consola avem string in format JSON
         console.log(data)  // in consola avem obiect
-        let nationality = data.country[0].country_id
+       
 
         //HW2: check when empty response and show a corresponding message
         
@@ -42,15 +43,22 @@ form.addEventListener('submit', (e) => {
         //     console.log("We cant process your request!")
         // }
 
-        data.country.some( c => {
-            if( !c.country_id ) {
-                console.log("We cant process your request!")
-            }
-        } )
+        // data.country.some( c => {
+        //     if( !c.country_id ) {
+        //         console.log("We cant process your request!")
+        //     }
+        // } )
+        if(data.country.length === 0){
+            alert("Invalid name.Please try again!")
+        }else{
+            let nationality = data.country[0].country_id
+            output.innerHTML = `You are most probably from <strong>${nationality}</strong>`
+        }
+           
         console.log(nationality)
 
-        output.innerHTML = `You are most probably from <strong>${nationality}</strong>`
     }
+  
 
     // 1. send request  (name)     --> API
     // 2. wait for response (JSON) <-- API 
