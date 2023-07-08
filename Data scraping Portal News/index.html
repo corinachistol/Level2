@@ -69,6 +69,7 @@
                 param: "query",
 
                  domMapping: {
+                    source: "h1 ~ a.href" ,
                     title: "h1 ~ a > div>div",
                     image: "h1 ~ a > img"
                 }
@@ -110,24 +111,39 @@
             // extragem fraza cheir
             let keyPhrase = inputElement.value
            
-            sendSearch(config[3], keyPhrase)
+            sendSearch(config[1], keyPhrase)
 
         }
 
         const render = (data, parent) => {
-            for(let i = 0; i> data.length; i++) {
-                let div = document.createElement('div')
+            // for(let i = 0; i> data.length; i++) {
+            //     let div = document.createElement('div')
 
+            //     let h3 = document.createElement('h3')
+            //     h3.innerText = data[i].title
+
+            //     let img = document.createElement('img')
+            //     img.src = data[i].img_src
+
+            //     div.appendChild(h3)
+            //     div.appendChild(img)
+
+            //     parent.appendChild(div)
+            // }
+
+            for(let i=0; i< data.length; i++) {
+                let a = document.createElement('a')
+                
                 let h3 = document.createElement('h3')
                 h3.innerText = data[i].title
 
                 let img = document.createElement('img')
                 img.src = data[i].img_src
+                a.appendChild(h3)
+                a.appendChild(img)
+                a.setAttribute("href") = 
 
-                div.appendChild(h3)
-                div.appendChild(img)
-
-                parent.appendChild(div)
+                parent.appendChild(a)
             }
         }
 
@@ -148,6 +164,7 @@
                 
                 let titleElements = htmlDoc.querySelectorAll(portal.domMapping.title)
                 let imageElements = htmlDoc.querySelectorAll(portal.domMapping.image)
+                let sourceElements = htmlDoc.querySelectorAll(portal.domMapping.source)
 
                 // console.log(htmlDoc)
                 // console.log(titleElements)
@@ -159,7 +176,8 @@
                 for(let i=0; i< titleElements.length; i++){
                     news.push({
                         title:titleElements[i].innerText,
-                        img_src: imageElements[i].src
+                        img_src: imageElements[i].src,
+                        source: sourceElements[i].href
                     })
                     console.log(news)
                 }
