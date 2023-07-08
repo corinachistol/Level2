@@ -35,10 +35,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Scrapper</title>
+    <style>
+        *{
+            margin: auto;
+            padding: 0;
+        }
+        body{
+            background-color: #235;
+            color: white;
+       
+        }
+        h1{
+            text-align: center;
+        }
+        #output{
+            margin: auto;
+            width: 50%;
+            //border: 1px solid red;
+        }
+        .table{
+           
+            
+        }
+    </style>
 </head>
 <body>
 
+    <h1>List of programming languages for J letter according to Wikipedia</h1>
+    <div id="output"></div>
+
     <script>
+
+        const outputElement = document.querySelector('#output')
 
         const URL = "https://en.wikipedia.org/wiki/List_of_programming_languages"
         //let languages=[]
@@ -62,23 +90,23 @@
                 let div = divs[9]
                 let lis = div.firstElementChild.children
                 //console.log(lis)
-                // for(let i=0; i< lis.length; i++) {
-                //     languages.push( lis[i].firstElementChild.innerText )  
-                // }
+                for(let i=0; i< lis.length; i++) {
+                    languages.push( lis[i].firstElementChild.innerText )  
+                }
 
                 // lis = [...lis].forEach( (li) =>{
                 //     languages.push(li.firstElementChild.innerText)
                 // } )
 
-                Array.from(lis).forEach( (li) =>{
-                    languages.push(li.firstElementChild.innerText)
-                } )
+                // Array.from(lis).forEach( (li) =>{
+                //     languages.push(li.firstElementChild.innerText)
+                // } )
 
 
                 //HW1: render the gathered info into a html table intr-o coloana
                 //using DOM OOP aproach
 
-                //render()
+                render(languages, outputElement)
 
                 
                 //console.log(htmlDoc) // este un document in memorie care s-a incarcat de pe wikipedia
@@ -89,23 +117,24 @@
 
             xhr.send()
         }
+
+        loadPage()
         
         
 
        
 
-        const render = () =>{
+        const render = (data, parent) =>{
             const table = document.createElement('table')
             const tbody = document.createElement('tbody')
 
-            for(let i=0; i<25; i++){ // languages.length in loc de 20, dar languages = f() si nu functioneaza
+            for(let i=0; i<data.length; i++){ 
                const row = document.createElement("tr")
 
                for(let j=0; j<1; j++){
                 const cell = document.createElement("td")
-                const cellText = document.createTextNode( `i can`)
+                cell.innerHTML = data[i]
                 
-                cell.appendChild(cellText)
                 row.appendChild(cell)
             }
 
@@ -114,11 +143,12 @@
 
             table.appendChild(tbody)
 
-            document.body.appendChild(table)
-            table.setAttribute("border",2)
+            parent.appendChild(table)
+            table.setAttribute('border', 2)
+          
         }
 
-        render()
+  
 
         // class Table{
         //     constructor(row,col,cell){
@@ -144,8 +174,8 @@
         //     }
         // }
 
-        let table = new Table(1,1,10)
-        table.render()
+        // let table = new Table(1,1,10)
+        // table.render()
 
 
     </script>
