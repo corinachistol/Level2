@@ -19,7 +19,7 @@ const load = () =>{
     //1.check the cache
     let data = null
     if(checkDataCache("data")){
-        //2.tajke from cache
+        //2.take from cache
         data = loadDataFromCache("data")
         cb(data)
     }else{

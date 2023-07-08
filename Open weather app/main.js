@@ -21,15 +21,20 @@
 
 // facem legatura cu obiectele din html (form,input, button)
 const formWeather = document.getElementById('form-weather')
-const inputWeather = document.querySelector('#form-weather input')
+const inputWeather = formWeather.firstElementChild
 const btnWeather = document.querySelector('#form-weather button')
-const output = formWeather.lastElementChild
 
+const output = formWeather.lastElementChild
+const outputIcon = output.children[0]
+const outputTemp = output.children[1]
+const outputTempDesc = document.querySelector('output-description')
+const outputLocation = document.querySelector('output-location')
+
+let inpCity = inputWeather.value.trim() 
 
 function submitForm(e){
     e.preventDefault()
 
-    let inpCity = inputWeather.value.trim() 
     console.log(inpCity)
 
     //cream un obiect de tip Request()
@@ -60,16 +65,16 @@ function submitForm(e){
 
         console.log(name, lon, lat, temp, feels_like, humidity,speed)
 
-        render( data )
+        //render( data )
 
-        // if(xhr.status !== 200){
-        //     debugger
-        //     alert('Wrong city name!!!')
-        // } else{
-        //     output.innerHTML = `
-        //          The temperature in ${name} is ${temp}C ${icon} , feels like: ${feels_like} with a humidity of ${humidity}% and wind speed ${speed} km/h.
-        //     `
-        // }
+        if(xhr.status !== 200){
+            alert('Wrong city name!!!')
+        } else{
+            outputIcon.innerHTML = `<img src="icons/${icon}.png">`
+            outputTemp.innerHTML = `${temp}*C`
+            //outputTempDesc.innerHTML = `feels like:${feels_like}, humidity: ${humidity}`
+            outputLocation.innerHTML = `${inpCity}`
+        }
     }
 
 }
