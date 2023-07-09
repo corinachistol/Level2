@@ -1,10 +1,6 @@
  const labels = []
 // const rates = []
 
-// const labels = {
-//     EUR: [],
-//     USD: [],
-// }
 const rates = {
     EUR: [],
     USD: [],
@@ -33,8 +29,8 @@ const getRatesForDates = (date) => { //09.07.2023
         let valueUsd = parseFloat(valuteUsd.lastElementChild.innerHTML)
 
         // console.log(xmlDoc)
-        // //console.log(valute.lastElementChild.textContent)
-        console.log(rates)
+        // console.log(valute.lastElementChild.textContent)
+        // console.log(rates)
         rates.EUR.push(valueEur)
         rates.USD.push(valueUsd)
         
