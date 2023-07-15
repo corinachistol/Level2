@@ -29,27 +29,24 @@ form.addEventListener('submit', (e) => {
     xhr.onload = () => {
         let response = xhr.responseText
         let data = JSON.parse(response)
-        console.log(response)  // in consola avem string in format JSON
-        console.log(data)  // in consola avem obiect
+        // console.log(response)  // in consola avem string in format JSON
+        // console.log(data)  // in consola avem obiect
        
 
         //HW2: check when empty response and show a corresponding message
         
         // if(!data){
         //     console.log("We cant process your request!")
-        // }
+        // }else{
+        //         let nationality = data.country[0].country_id
+        //         output.innerHTML = `You are most probably from <strong>${nationality}</strong>`
+        // } 
 
-        // if(nationality == 'undefined'){
-        //     console.log("We cant process your request!")
-        // }
-
-        // data.country.some( c => {
-        //     if( !c.country_id ) {
-        //         console.log("We cant process your request!")
-        //     }
-        // } )
+   
         if(data.country.length === 0){
             alert("Invalid name.Please try again!")
+            output.innerHTML = "Invalid name.Please try again!"
+            //output.textContent = "Invalid name.Please try again!"
         }else{
             let nationality = data.country[0].country_id
             output.innerHTML = `You are most probably from <strong>${nationality}</strong>`
