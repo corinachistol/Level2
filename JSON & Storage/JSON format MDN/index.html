@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Our superheroes</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+      <header>
+
+      </header>
+
+      <section>
+
+      </section>
+
+      <script>
+
+        let superHeroes = {
+          "squadName": "Super hero squad",
+          "homeTown": "Metro City",
+          "formed": 2016,
+          "secretBase": "Super tower",
+          "active": true,
+          "members": [
+            {
+              "name": "Molecule Man",
+              "age": 29,
+              "secretIdentity": "Dan Jukes",
+              "powers": ["Radiation resistance", "Turning tiny", "Radiation blast"]
+            },
+            {
+              "name": "Madame Uppercut",
+              "age": 39,
+              "secretIdentity": "Jane Wilson",
+              "powers": [
+                "Million tonne punch",
+                "Damage resistance",
+                "Superhuman reflexes"
+              ]
+            },
+            {
+              "name": "Eternal Flame",
+              "age": 1000000,
+              "secretIdentity": "Unknown",
+              "powers": [
+                "Immortality",
+                "Heat Immunity",
+                "Inferno",
+                "Teleportation",
+                "Interdimensional travel"
+              ]
+            }
+          ]
+        }
+
+        async function populate() {
+            const requestURL = 
+            "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+            const request = new Request(requestURL)
+
+            //asteapta sa se afiseze cererea de pe URL de mai sus
+            const response = await fetch(request);
+            console.log(response)
+            // asteapta sa se afiseze raspunsul de mai sus in obj
+            const superHeroes = await response.json();
+            console.log(superHeroes)
+            
+            // response.text() = JSON.stringify()
+            //const superHeroesText = await response.text();
+            //console.log(superHeroesText)
+
+            //response.json() = JSON.parse()
+            //const superHeroes = JSON.parse(superHeroesText)
+
+            populateHeader(superHeroes)
+            populateHeroes(superHeroes)
+        }
+
+        //Populating the header
+        function populateHeader(obj){
+          const header = document.querySelector("header");
+          const myh1 = document.createElement("h1");
+          myh1.textContent = obj.sqadName;
+          header.appendChild(myh1);
+
+          const myPara = document.createElement("p");
+          myPara.textContent = `Hometown:${obj.homeTown} // Formed:${obj.formed}`;
+          header.appendChild(myPara)
+        }
+
+        //Creating the hero information cards
+        function populateHeroes(obj){
+          const section = document.querySelector("section");
+          //pastram informatia despre membrii obiectului intr-o variabila,pentru lucrul viitor
+          const heroes = obj.members;
+
+          //utilizam for..of loop sa mergem prin fiecare obiect din array si pentru fiecare in parte cream un articol, h2,paragraf si lista
+          for(const hero of heroes){
+            const myArticle = document.createElement("article");
+            const myH2 = document.createElement("h2");
+            const myPara1 = document.createElement("P");
+            const myPara2 = document.createElement("P");
+            const myPara3 = document.createElement("P");
+            const myList = document.createElement("ul");
+
+            myH2.textContent = hero.name;
+            myPara1.textContent = `Secret identity:${hero.secretIdentity}`;
+            myPara2.textContent = `Age:${hero.age}`;
+            myPara3.textContent = "Superpowers";
+
+            //pentru a nu scrie de fiecare data asa obj.members[i].powers ,cream o variabila unde apstram informatia respectiva si pentru fiecare in parte cream o lista
+            const superPowers = hero.powers;
+            for(const power of superPowers){
+              const listItem = document.createElement("li");
+              listItem.textContent = power;
+              myList.appendChild(listItem) 
+            }
+
+            //la sfirsit apribuim elementele create articolului. Ordinea in care facem append e important, precum asa se vor randa in pagina
+            myArticle.appendChild(myH2);
+            myArticle.appendChild(myPara1);
+            myArticle.appendChild(myPara2);
+            myArticle.appendChild(myPara3);
+            myArticle.appendChild(myList);
+
+            section.appendChild(myArticle)
+
+          }
+        }
+
+        populate()
+
+      </script>
+  </body>
+</html>
