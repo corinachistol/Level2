@@ -24,10 +24,10 @@ console.log(counter(["shaun", "crystal", "ryu"]))
 console.log(pi)
 console.log(adder(5,6))
 
-const events = require('events')
-//import events from 'node.event'
+//const events = require('events')
+import events from 'events'
 
-let myEmitter = new EventEmitter.EventEmitter()
+let myEmitter = new events.EventEmitter()
 
 myEmitter.on('someEvent', function(message){
     console.log(message)
@@ -43,13 +43,14 @@ class Person extends events.EventEmitter {
     }
 }
 
-util.inherits(Person,EventEmitter.EventEmitter)
+//util.inherits(Person,EventEmitter.EventEmitter)
+
 
 let james= new Person("james")
 let mary= new Person("mary")
 let ryu= new Person("ryu")
 
-let people = ["james","mary","ryu"]
+let people = [james,mary,ryu]
 
 people.forEach( function(person){
     person.on('speak', function(message){
@@ -58,3 +59,5 @@ people.forEach( function(person){
 } )
 
 james.emit('speak', "hello dudes")
+mary.emit('speak', 'i want to sleep)))')
+ryu.emit('speak', 'good night!')
