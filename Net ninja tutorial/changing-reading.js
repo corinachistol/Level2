@@ -7,7 +7,7 @@ import fs from 'fs'
 //fs.writeFileSync('writeMe.txt', readme)
 
 //metoda asincrona- nu va blca codul de mai jos si se va executa in orice moment
-// fs.readFile('readMe.txt', 'utf8', function(err, data){
+//  fs.readFile('readMe.txt', 'utf8', function(err, data){
 //     fs.writeFile('writeMe.txt', data, function(err,_data){})
 // } )
 

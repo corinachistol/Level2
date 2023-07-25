@@ -1,3 +1,18 @@
 {
-    "type":"module"
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "net-ninja-tutorial",
+  "description": "Yay, you read me!",
+  "version": "1.0.0",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
