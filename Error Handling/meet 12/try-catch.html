@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handling Exceptions</title>
+</head>
+<body>
+    <form>
+        <div id="formFeedback"></div>
+        .....<br>
+        <input
+        id="nameInput" 
+            type="text"
+            placeholder="entr name..."
+            onkeyup="validateName()"
+            >
+            <br>
+            <div id="nameInputFeedback"></div>
+        .....<br>
+        <button id="formBtn">APPLY</button>
+    </form>
+
+    <script>
+
+        const  formBtn = document.getElementById('formBtn')
+
+        const validateName = () => {
+            let  nameInput = document.getElementById('nameInput')
+            let  nameInputFeedback = document.getElementById('nameInputFeedback')
+            let name = nameInput.value
+            console.log(name)
+            if(name.length < 3) {
+                let message = "ERROS:name must be at least 3 characters"
+                nameInputFeedback.innerHTML = message
+               throw new Error (message)
+
+            }else{
+                nameInputFeedback.style.display = "none"
+            }
+        }
+
+        const submitForm = (e) => {
+            e.preventDefault()
+
+            let formFeedback = document.getElementById("formFeedback")
+            try{
+                //validate phone 
+                //validate email
+                validateName()
+                alert("Data Sent!")
+
+            }catch(err) {
+                formFeedback.innerHTML = err.message
+            }
+        }
+
+        formBtn.addEventListener('click', submitForm)
+
+    
+
+
+    </script>
+    
+</body>
+</html>
