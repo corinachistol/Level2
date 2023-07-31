@@ -1,0 +1,1 @@
+import temperature from './temperature.json' assert { type:"json" }
