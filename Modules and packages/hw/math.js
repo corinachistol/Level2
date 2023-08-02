@@ -4,8 +4,8 @@ import { isNumber, onlyNumbers } from './types.js'
 
 
 export const arr = temperature.temps 
-console.log(arr)
-console.log(isNumber(arr)) //[ 100, -50, 0.5, 1 ]
+console.log(arr)    // [ 100, null, -50, 0.5, 'NaN', 1, 'undefined' ]
+//console.log(isNumber(arr)) //[ 100, -50, 0.5, 1 ]
 
 export const add = (onlyNumbers) =>  {
      return onlyNumbers.reduce( (acc,current) => acc + current, 0 )
@@ -45,6 +45,21 @@ export const divide = (onlyNumbers)=> {
 
 }
 //console.log(divide(onlyNumbers))
+
+
+// const errorMargin = (arr) => {
+//     let delta;
+//     let sum = 0;
+//     for(let i=0; i< arr.length; i++ ){
+//         if( typeof arr[i] === "number"){
+//             sum += arr[i]
+//         }
+//         //return delta
+//     }
+//     delta = Math.round(sum / arr.length)
+//     console.log(`Marja de eroare este ${delta}%`)
+// }
+//console.log(errorMargin(arr))
 
 
 //HW2: anonymous vs named functions difference
