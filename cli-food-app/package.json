@@ -1,0 +1,12 @@
+{
+  "name": "cli-food-app",
+  "version": "1.0.0",
+  "description": "- module caching / SINGLETON pattern\r  - module vs package = 2 containere care se diferentiaza unul de altul",
+  "main": "cli-app.mjs",
+  "scripts": {
+    "start": "node --experimental-specifier-resolution=node cli-app.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
