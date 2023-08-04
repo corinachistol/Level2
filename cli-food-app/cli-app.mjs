@@ -7,8 +7,9 @@ import { menu, printMenu, printMessage } from './food/index.mjs'
 
 //ciclu asincron
 function mainLoop() {
-    const validOptions = menu.length 
-    console.log(validOptions)
+    const validOptions = menu.forEach( element => console.log (element.id) )  // 1 2 3
+    console.log( typeof validOptions) //undefined
+    
     printMenu( menu, (option) => {
         
 
