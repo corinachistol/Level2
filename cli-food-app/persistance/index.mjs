@@ -1,7 +1,7 @@
 //use file system
+//video 00015_12
 import fs from 'fs'
 import map from './map.mjs'
-import Clazz from "./map[data['type']]"
 
 
 
@@ -17,29 +17,36 @@ import Clazz from "./map[data['type']]"
 //let data = { name: "Salad"}
 
 //save to file
-export const save = ( data, type ) => {
-    data.type = type
+export const save = ( object, path  ) => {
+    object.type = object.constructor.name
     fs.writeFileSync(
-        "./persistance/data/food.json",  //???
-        JSON.stringify(data)
+        path,  //???
+        JSON.stringify(object)
     )
 
 }
 
 //load from file
-export const load = () => {
+export const load = async (path) => {
 
     let data = JSON.parse(
         fs.readFileSync(
-            "./persistance/data/food.json"  //???
+            path  //???
     ).toString()
     )
+    
     //cautam cheia type in interiorul data = "type":"Food", obtinem map[data] care =    "Food": "./food/Food.mjs", 
     // const Clazz = require (map[data['type']])
-
+    
+    const  module = await import( map[data['type']] )
+    
+    const Clazz = module[data['type']]
+    console.log(Clazz)
     let obj = new Clazz(data.name)
     return obj
 
 }
+
+// load()
 
 // read--->buffer --< String ---> { } ---> Food

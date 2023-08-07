@@ -5,23 +5,24 @@ import { menu, printMenu, printMessage } from './food/index.mjs'
 //import './client'
 //console.log(menu)
 
+
 //ciclu asincron
 function mainLoop() {
-    const validOptions = menu.forEach( element => console.log (element.id) )  // 1 2 3
-    console.log( typeof validOptions) //undefined
+    const validOptions =  menu.map( element => { return element.id  } ) // [ 1, 2, 3 ]
+    //console.log(validOptions) 
     
     printMenu( menu, (option) => {
         
 
         let optionInt = parseInt(option)
-        console.log(typeof optionInt)
+        //console.log(typeof optionInt)
 
-        if(optionInt !== "number" || !validOptions.includes(option) ){
-            console.log('Invalid input')
+        if( typeof optionInt === "number"  && validOptions.includes(optionInt) ){
+            console.log("You've chosen ", optionInt)
             //HW4: !!! string input --> integer number
             //          + check  if wrong option --> console error  --> inexistent option
         } else{
-            console.log("You've chosen ", optionInt)
+            console.log("Inexistent option. Please select again")
         }
         setTimeout(mainLoop,500) 
     

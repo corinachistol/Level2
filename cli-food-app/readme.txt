@@ -6,3 +6,13 @@
  package = modulaA + moduleB +..... moduleN + [ METADATA ]
  Packages sunt pentru a organzia codul la un nivel mai inalte, pentru a evita conflictele intre module
  
+
+
+
+--->persistency
+    - dependency :fs module
+    - JSON lib
+    - variable <----- Item(obj) -----> .json
+
+    *save()
+    *load()
