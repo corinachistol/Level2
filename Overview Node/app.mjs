@@ -20,9 +20,12 @@ const io = readline.createInterface({input, output})
 // })
 
                                         //ceea ce va fi introdus de la tastatura, va nimeri aici ca string
-io.question('Choose the day (1..7): ', (day_number, day_name) => {
-        // console.log( day_number , typeof day_number)
+io.question('Choose the day (1..7) or (Monday .. Sunday): ', (day_number, day_name) => {
+        console.log( day_number ,day_number.constructor)
+        // console.log( day_number ,day_number.__proto__)
         // console.log( day_name , typeof day_name)
+        // console.log( day_name , day_name.__proto__)
+        console.log( day_name , day_name.constructor)
 
         //Hw1: what if the user inputs the day name--->"Monday"
         //Hw2*: what if the user inputs a range ---> 1..3, "Monday".."tuesday"  task asemanator de la teste
@@ -33,10 +36,12 @@ io.question('Choose the day (1..7): ', (day_number, day_name) => {
         //find algorithm
         data_week.forEach( (day, index) => {
             if( index + 1 == +day_number ){   //|| typeof day_name == "string" 
+                console.log(day)
                 console.log(`[${day.date}]:${day.temp}`  )
             }
-            if( day.name == day_name ){
-                console.log(`[${day.date}]:${day.temp}` )
+            
+            if( day.name === day_name){
+                console.log('ai ales corect')
             }
         });
         io.close()
@@ -44,10 +49,7 @@ io.question('Choose the day (1..7): ', (day_number, day_name) => {
 
 
 
-// data_week.forEach(day => {
-//      console.log(`[${day.date}]:${day.temp}`  )
-    
-// });
+
 
 
 //interaction
