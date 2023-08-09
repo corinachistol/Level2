@@ -18,6 +18,16 @@ console.log(key.HOST)
 
 const rl = readline.createInterface({ input, output })
 
+// async function callback() {
+//   try{
+//     const answer = await rl.question("Input a city name...")
+
+
+//   }catch(error){
+
+//   }
+// }
+
 const answer = await rl.question("Input a city name...")
   // .then( (res)=>{
   //   res.setEncoding('utf8')
@@ -42,27 +52,34 @@ const answer = await rl.question("Input a city name...")
 
 //const answer = rl.question("Input a city name...")
 
+
 const callback = ( res ) => {   // <<<< res - readable stream
   //console.log( res )
+  if( res.statusCode !== 200){
+    console.log( `Wrong City Name: ${res.statusCode}: ${res.statusMessage}`)
+  } else{
+    res.setEncoding('utf8')
+    res.on('data', (chunk)=> {
+      // console.log('API response with data' )
+      // console.log(chunk)
+      const data = JSON.parse(chunk)
+      let {
+        main: {temp, temp_min, temp_max},
+        wind:{speed}
+      } = data
+      console.log(`>>>>>> In ${answer} city there are ${Math.round(temp)}C with a minimum temperature of ${Math.round(temp_min)} and maximum ${Math.round(temp_max)}. The speed of the wind is ${Math.round(speed)}km/h`)
+    })
+    res.on('end', ()=> {
+      console.log('API response ended')
+    })
+    res.on('error', ()=> {
+      console.log('API response  with error')
+    })
+
+  }
+
   
   //BIND EVENT HANDLERS
-  res.setEncoding('utf8')
-  res.on('data', (chunk)=> {
-    // console.log('API response with data' )
-    // console.log(chunk)
-    const data = JSON.parse(chunk)
-    let {
-      main: {temp, temp_min, temp_max},
-      wind:{speed}
-    } = data
-    console.log(`In ${answer} city is ${Math.round(temp)}C with a minimum temperature of ${Math.round(temp_min)} and maximum ${Math.round(temp_max)}. The speed of the wind is ${Math.round(speed)}km/h`)
-  })
-  res.on('end', ()=> {
-    console.log('API response ended')
-  })
-  res.on('error', ()=> {
-    console.log('API response  with error')
-  })
 }
 
 
