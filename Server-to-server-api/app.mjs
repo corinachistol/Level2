@@ -18,6 +18,10 @@ console.log(key.HOST)
 
 const rl = readline.createInterface({ input, output })
 
+// const printWeather = () =>{
+//   rl.question("Input a city name...")
+// }
+
 // async function callback() {
 //   try{
 //     const answer = await rl.question("Input a city name...")
@@ -69,16 +73,20 @@ const callback = ( res ) => {   // <<<< res - readable stream
       } = data
       console.log(`>>>>>> In ${answer} city there are ${Math.round(temp)}C with a minimum temperature of ${Math.round(temp_min)} and maximum ${Math.round(temp_max)}. The speed of the wind is ${Math.round(speed)}km/h`)
     })
+
+    setTimeout(callback, 500)
+
     res.on('end', ()=> {
       console.log('API response ended')
     })
     res.on('error', ()=> {
       console.log('API response  with error')
     })
+  
 
   }
 
-  
+
   //BIND EVENT HANDLERS
 }
 
@@ -94,7 +102,7 @@ const req = http.request({
 
 
 
-req.end()
+// req.end()
 
 //req = writable stream --->
 
