@@ -11,14 +11,17 @@ const rl = readline.createInterface( { input, output } )
             
 //         })
 
-export const getCityName = () => {
+export const loop = () => {
     rl.question('Enter a city name ... ', (answer) => {
         //console.log(Object.getPrototypeOf(answer))
-        getCityWeather(answer,printCityWeather(json)) 
-        //console.log(answer)
+        //console.log(typeof answer)
+        getCityWeather(answer,printCityWeather) 
         
     })
 }
+// rl.close()
+
+loop()
 
 
 
