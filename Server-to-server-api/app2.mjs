@@ -1,20 +1,17 @@
 import http from 'node:http'
 import key from './config.json' assert { type: "json" }
-import * as readline from 'node:readline'
-import { stdin as input, stdout as output } from 'node:process';
-//console.log(key.KEY)
 
-let city = "Chisinau"
+import { getCityName } from './app2-readline.mjs'
+//console.log(getCityName())
 
-const rl = readline.createInterface( { input, output } )
+const city = getCityName()
+console.log(city)
 
-// const enterCity = () => {
-//     rl.question('Enter a city name...', answer => {
-//         console.log(answer)
-//     })
-// }
 
-const options = {
+//let city = "Chisinau"
+
+
+export const options = {
     host: key.HOST,
     path: key.PATH + `?q=${city}&appid=${key.KEY}&units=metric`,
     port: 80,
@@ -22,7 +19,7 @@ const options = {
 }
 
 //cream o functie care ne va returna orasul
-const getCityWeather = (cb) => {
+export const getCityWeather = (cb ) => {
     const req = http.request(options, (response) => {
         //console.log( `STATUS: ${response.statusCode}`)
 
@@ -50,7 +47,7 @@ const getCityWeather = (cb) => {
    
 }
 
-const printCityWeather = (json) => {
+export const printCityWeather = (json) => {
     let {
         main: {temp, temp_min, temp_max},
         wind:{speed}
@@ -59,7 +56,12 @@ const printCityWeather = (json) => {
     console.log(`>>>>>> In ${city} city there are ${Math.round(temp)}C with a minimum temperature of ${Math.round(temp_min)} and maximum ${Math.round(temp_max)}. The speed of the wind is ${Math.round(speed)}km/h`)
 }
 
+const loop = () => {
+    getCityName()
+    getCityWeather(printCityWeather)
+}
 
-//enterCity(getCityWeather(printCityWeather))
+loop()
 
-getCityWeather(printCityWeather)
+
+
