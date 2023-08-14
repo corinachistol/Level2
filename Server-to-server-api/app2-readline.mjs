@@ -13,10 +13,9 @@ const rl = readline.createInterface( { input, output } )
 
 export const getCityName = () => {
     rl.question('Enter a city name ... ', (answer) => {
-        getCityWeather((answer, ) => {
-            printCityWeather (answer)
-        })
-        console.log(answer)
+        //console.log(Object.getPrototypeOf(answer))
+        getCityWeather(answer,printCityWeather(json)) 
+        //console.log(answer)
         
     })
 }
