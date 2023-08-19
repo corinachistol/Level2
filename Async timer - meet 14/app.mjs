@@ -2,10 +2,14 @@
 //o functie pentru ceva concret
 // mai mutle functii simple si pe urma incercam sa le combinam/complcam
 import https from 'node:https'
-import { setTimeout } from 'node:timers/promises'
-import { json } from 'stream/consumers'
+import * as readline from 'node:readline';
+import { stdin as input, stdout as output } from 'node:process';
+
+const rl = readline.createInterface({ input, output });
+
 
 // acesta functie ne da cuvintul cautat
+// callback based
 const getDefinition = (word, callback) => {
     const URL = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
     // node fetch   - promise
@@ -51,6 +55,7 @@ const getDefinition = (word, callback) => {
         })
         response.on( 'error', error => console.log(error) )
     })
+
 }
 
 
@@ -58,7 +63,24 @@ const printData = (json) => {
     console.log(json)
 }
 
+function loop() {
+    rl.question('Enter a word to find its definition...', (answer)=> {
+        //console.log(typeof answer)
+        if(!answer || answer == ""){
+            throw new Error("Invalid word!!! Please try again")
+        }else{
+            getDefinition(answer, printData)
+            setTimeout( loop, 1000 )
+        }
+    } )
+ 
+}
+loop()
+
+
 
 
 ///////////////////////////////////////////////////////////
-getDefinition("hello", printData)
+// usage as callbacks
+// getDefinition("hello", printData)
+
