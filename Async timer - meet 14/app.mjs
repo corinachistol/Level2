@@ -66,11 +66,19 @@ const printData = (json) => {
 function loop() {
     rl.question('Enter a word to find its definition...', (answer)=> {
         //console.log(typeof answer)
-        if(!answer || answer == ""){
-            throw new Error("Invalid word!!! Please try again")
-        }else{
+        // if(!answer || answer == ""){
+        //     throw new Error("Invalid word!!! Please try again")
+        // }else{
+        //     getDefinition(answer, printData)
+        //     setTimeout( loop, 1000 )
+        // }
+        
+        let r = /[a-zA-Z]/g
+        if(answer.match(r ) ){
             getDefinition(answer, printData)
             setTimeout( loop, 1000 )
+        }else{
+            throw new Error("Invalid word!!! Please try again")
         }
     } )
  

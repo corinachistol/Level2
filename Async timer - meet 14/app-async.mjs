@@ -15,9 +15,8 @@ const getWord = async() => {
 }
 
 
-const getDefinition = async () => {
+const getDefinition = async (word) => {
 
-    const word =  await getWord()
     const URL = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
 
     return new Promise( (resolve, reject)=> {
@@ -42,24 +41,26 @@ const getDefinition = async () => {
 }
 
 const printData = (json) => {
-    console.log(json)
+    return new Promise ( (resolve,reject)=>{
+        resolve(json)
+    } )
 }
 
-//Promise
 
-const step = () => {
+//async/ await
+const loop = async () => {
+    try{
+        const word =  await getWord()
+        const definition = await getDefinition( word)
+        const print = await printData(definition)
 
-    getDefinition()
-        .then( json => {
-            printData(json) 
+        setTimeout( loop, 1000)
 
-            step()
-    
-        })
-    .catch(err => console.error("Error!;",err) ) 
-
+        console.log(print)
+    }catch(err){
+        console.error("Error!;",err)
+    }
 }
 
-step()
-
+loop()
 
