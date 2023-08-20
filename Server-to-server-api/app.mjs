@@ -4,9 +4,9 @@ import readline from 'node:readline/promises'
 import { stdin as input, stdout as output } from 'node:process';
 
 import  key  from './config.json' assert { type: "json" }
-console.log(key.KEY)
-console.log(key.PATH)
-console.log(key.HOST)
+// console.log(key.KEY)
+// console.log(key.PATH)
+// console.log(key.HOST)
 //console.log(http)
 
 //HW1
@@ -18,44 +18,7 @@ console.log(key.HOST)
 
 const rl = readline.createInterface({ input, output })
 
-// const printWeather = () =>{
-//   rl.question("Input a city name...")
-// }
-
-// async function callback() {
-//   try{
-//     const answer = await rl.question("Input a city name...")
-
-
-//   }catch(error){
-
-//   }
-// }
-
-const answer = await rl.question("Input a city name...")
-  // .then( (res)=>{
-  //   res.setEncoding('utf8')
-  //   console.log(res) })
-  // .then ( ()=>{
-  //   res.on('data', (chunk)=> {
-  //     const data = JSON.parse(chunk)
-  //     console.log(data)
-  //   })
-  // })
-  // .then( () => {
-  //    res.on('end', ()=> {
-  //     console.log('API response ended')
-  //   })
-  // })
-  // .catch( ()=> {
-  //   res.on('error', ()=> {
-  //     console.log('API response  with error')
-  //   })
-  // })
-    
-
-//const answer = rl.question("Input a city name...")
-
+const answer = rl.question('Enter a city name...')
 
 const callback = ( res ) => {   // <<<< res - readable stream
   //console.log( res )
@@ -74,7 +37,7 @@ const callback = ( res ) => {   // <<<< res - readable stream
       console.log(`>>>>>> In ${answer} city there are ${Math.round(temp)}C with a minimum temperature of ${Math.round(temp_min)} and maximum ${Math.round(temp_max)}. The speed of the wind is ${Math.round(speed)}km/h`)
     })
 
-    setTimeout(callback, 500)
+  
 
     res.on('end', ()=> {
       console.log('API response ended')
@@ -85,8 +48,6 @@ const callback = ( res ) => {   // <<<< res - readable stream
   
 
   }
-
-
   //BIND EVENT HANDLERS
 }
 
