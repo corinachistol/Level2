@@ -16,7 +16,7 @@ const server = http.createServer((req, res)=>{
     greet()
 
 
-    //set header content type
+    //set header content type. Noi spunem serverului ce tip de informatie vrem sa primim inapoi. in cazul nostru text
     res.setHeader('Content-Type', 'text/html' )
 
     let path = './views/';
@@ -29,7 +29,8 @@ const server = http.createServer((req, res)=>{
             path +='about.html'; 
             res.statusCode = 200;
             break;
-        case '/about-bla':
+            //redirectionam o pagina spre alta
+        case '/about-me':
             res.statusCode = 301;
             res.setHeader('Location', './about')
             res.end()
@@ -47,20 +48,22 @@ const server = http.createServer((req, res)=>{
             res.end()
         } else{
             //res.write(data)
-            
+            // daca noi trasmitem doar un obiect cu res.write, atunci o putem face ca in linia de mai jos.Daca trimitem mai multe rsp.write, atunci ca mai sus
             res.end(data)
         }
 
     })
     
-
+    // Noi spunem serverului cind vine inapoi rsp sa afiseze acest continut  pe ecran
     // res.write('<head><link rel="styleseet" href="#" ></head>')
     // res.write('<p>Hello Ninjas</p>')
     // res.write('<p>Hello again Ninjas</p>')
 
-    // res.end()
+    // inchidem  raspunsul
+    //res.end()
 })
 
+// un server creat fara event listen nu poate face nimic, nu asteapta comenzi de la client
 server.listen( 3000, 'localhost', ()=>{
     console.log('listening for requests on port 3000')
 } )
