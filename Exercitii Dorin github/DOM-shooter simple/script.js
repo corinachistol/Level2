@@ -22,8 +22,11 @@ const target  = document.getElementById('target')
 const score = 0
 
 function shoot(e){
-    let x1 = 100
-    let y1 = 100
+    let centertX = target.offsetHeight / 2
+    let centerY = target.offsetWidth / 2
+    console.log(centertX)
+    console.log(centerY)
+
 
     console.log('Mouse pozition X',e.offsetX)
     console.log('Mouse position Y',e.offsetY)
