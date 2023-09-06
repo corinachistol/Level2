@@ -1,5 +1,0 @@
-###GET ALL ITEMS
-GET http://localhost:3000/items HTTP/1.1
-
-###GET single item
-GET http://localhost:3000/items/3 HTTP/1.1
