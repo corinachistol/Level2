@@ -10,7 +10,12 @@ console.log(decor)
 
 let places = ""
 for(let x = 1; x <= PARKING_PLACES; x++ ){
-    places += "| X |"
+     
+    if(x===freePlace){
+        places += "|  |" 
+    }else{
+         places += "| X |" 
+    }
     
 }
 
@@ -34,3 +39,6 @@ console.log(decor)
 // de ce a fost nevoie de variabilele decor si places ?
 // de ce cele 2 variabile mentionate mai sus au fost declarate pana la cicluri?
 // ce inseamna const si de ce numele variabilei declarate prin acest prefix difera ca sintaxa de celelalte variabile?
+
+
+// not finished
