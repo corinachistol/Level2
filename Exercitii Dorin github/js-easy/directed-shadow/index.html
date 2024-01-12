@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>body{font-size: 100px; font-family: monospace }</style>
+</head>
+<body>
+    <script>
+        function showShadow( length,position, direction ){
+            for(var x = 1; x <= 10; x++){
+                if( x == position ){
+                    document.write( '|' )
+                }else if( x > length && x < position){
+                    if(direction == 'right'){
+                        document.write('//')
+                    }
+                    if(direction == 'left'){
+                        document.write('\\')
+                    }
+                }else{
+                    document.write('_')
+                }
+            }
+        }
+        showShadow(3, 7, 'right');
+    </script>
+</body>
+</html>
