@@ -40,5 +40,3 @@ console.log(decor)
 // de ce cele 2 variabile mentionate mai sus au fost declarate pana la cicluri?
 // ce inseamna const si de ce numele variabilei declarate prin acest prefix difera ca sintaxa de celelalte variabile?
 
-
-// not finished
