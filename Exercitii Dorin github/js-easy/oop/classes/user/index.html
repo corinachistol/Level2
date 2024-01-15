@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User class Example</title>
+</head>
+
+<body>
+    <script>
+
+        class User {
+            // ???
+            constructor(username, email, password, avatar, created){
+                this.username = username
+                this.email = email, 
+                this.password = password
+                this.avatar = avatar,
+                this.created = created
+            }
+
+            render(){
+                let div = document.createElement('div')
+                let h2 = document.createElement('h2')
+                h2.innerHTML = `${this.username} - username (${this.email})`
+
+                let img = document.createElement('img')
+                img.innerHTML = `${this.avatar}`
+
+                let p = document.createElement('p')
+                p.innerHTML = ` User has registered ${this.created} ${this.period()} - days ago`
+
+                div.append(h2)
+                div.append(img)
+                div.append(p)
+
+                document.body.appendChild(div)
+                
+                console.log(div)
+                
+                return div
+                    
+
+            }
+
+            period(){
+                let today = new Date()
+                let dateCreated = this.created
+
+                let differenceInTime = dateCreated - today
+                let differenceInDays = Math.round(differenceInTime / (1000 * 3600 *24) )
+                return differenceInDays
+            }
+        }
+
+        //  ???
+        let user1 = new User("carol", "carol@gmail.com", 12546, ".....", '01/15/2024' )
+        let user2 = new User("maggy", "maggy@gmail.com", 12546, ".....", '10/01/2024' )
+        let user3 = new User("nick", "nick@gmail.com", 12546, ".....", '05/01/2024' )
+
+        user1.render()
+        user2.render()
+        user3.render()
+    </script>
+</body>
+
+</html>
