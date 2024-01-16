@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>body{font-size: 100px; font-family: monospace }</style>
+</head>
+<body>
+    <script>
+        var storage = {
+            text: "",
+            reset: function( ){
+                //  ???
+                this.text = ""
+            },
+
+            prepend: function ( word ){
+               this.text = `${word + ','} ${this.text}` 
+            },
+
+            append: function( word ){
+                this.text = `${this.text} ${word + ','}`
+            },
+
+            render: function(){
+                //  ???
+                document.write(`<p>${storage.text}</p>`)
+            }
+        }
+        console.log(storage)
+        storage.append('geam')
+        storage.append('apa')
+        storage.append('masa')
+        storage.prepend('casa')
+        storage.prepend('caine')
+        storage.prepend('pisica')
+        storage.render()
+        // storage.reset()
+        //  ???
+    </script>
+</body>
+</html>
